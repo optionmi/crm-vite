@@ -1,0 +1,35 @@
+.publisher{
+    padding:20px 5px 10px 61px;
+}
+
+.card{
+    border: none;
+    margin-top:20px;
+    background-color:antiquewhite;
+}
+
+#detail-card{
+    background-color:lightgray;
+}
+
+#trash-icon{
+    margin-left:10px;
+}
+
+button{
+    border: none;
+    background: none;
+}
+
+#Add-Icon{
+    height:20px;
+    colour:#8080ff;
+}
+
+.form-group {
+    padding-top:10px;
+}
+
+form button {
+    margin-top:10px;
+}
