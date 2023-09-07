@@ -111,7 +111,7 @@ function Salesperson() {
         <div className="header d-flex justify-content-between">
           <h4>Salesperson</h4>
           <button onClick={handleShow}>
-            <FontAwesomeIcon icon={faPlus} id="Add-Icon" /> Add Salespersons
+            <FontAwesomeIcon icon={faPlus} id="Add-Icon" /> Add Salesperson
           </button>
         </div>
 
