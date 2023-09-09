@@ -16,6 +16,11 @@ const Sidebar = () => {
           </a>
         </li>
         <li>
+          <a href="/" className={isActive('/') ? 'active' : ''} data-toggle="tooltip" data-placement="right" title="Leads">
+            <FontAwesomeIcon icon={faHome} id='li-1' />
+          </a>
+        </li>
+        <li>
           <a href="/publishers" className={isActive('/publishers') ? 'active' : ''} data-toggle="tooltip" data-placement="right" title="Publishers">
             <FontAwesomeIcon icon={faUsers} />
           </a>
