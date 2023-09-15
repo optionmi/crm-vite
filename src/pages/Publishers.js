@@ -29,26 +29,24 @@ function Publishers() {
         <div className="header d-flex justify-content-between">
           <h4>Publishers</h4>
         </div>
-
-              <div className="card">
-                <div className="card-body">
-                  <div className="row">
-                    <div className="col-3">
-                      <h5>Name</h5>
-                    </div>
-                    <div className="col-3">
-                      <h5>Address</h5>
-                    </div>
-                    <div className="col-3">
-                      <h5>Contact</h5>
-                    </div>
-                    <div className="col-3">
-                      <h5>Actions</h5>
-                    </div>
-                  </div>
-                </div>
+        {/* Publisher Header */}
+        <div className="card">
+          <div className="card-body">
+            <div className="row">
+              <div className="col-3">
+                <h5>Name</h5>
               </div>
-              {[publishers].map((publisher) => (
+              <div className="col-3">
+                <h5>Address</h5>
+              </div>
+              <div className="col-3">
+                <h5>Phone Number</h5>
+              </div>
+            </div>
+
+            {/* Publisher data */}
+
+            {publishers.map((publisher) => (
                 <div className="card" id="detail-card" key={publisher.id}>
                   <div className="card-body">
                     <div className="row">
@@ -64,10 +62,13 @@ function Publishers() {
                     </div>
                   </div>
                 </div>
-              ))}
-              </div>
-              </div>
-              );
-              }
+            ))}
+
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default Publishers;
