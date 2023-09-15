@@ -32,7 +32,7 @@ const publishersApi = {
         },
       })
       let data = await response.json()
-      return data.data[0];
+      return data;
     } catch (error) {
       throw error;
     }

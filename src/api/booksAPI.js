@@ -3,10 +3,17 @@ import axios from 'axios';
 const BASE_URL = 'http://localhost:8000';
 
 const booksAPI = {
-  getAllBooks: async () => {
+  getAllBooks: async (authToken) => {
     try {
-      const response = await axios.get(`${BASE_URL}/api/books`);
-      return response.data;
+      let response = await fetch(`${BASE_URL}/api/books/all`, {
+        method:'GET',
+        headers:{
+            'Content-Type':'application/json',
+            'authorization': authToken
+        },
+      })
+      let data = await response.json()
+      return data;
     } catch (error) {
       throw error;
     }
