@@ -10,10 +10,8 @@
 
 #detail-card{
     background-color:lightgray;
-}
-
-#trash-icon{
-    margin-left:10px;
+    height:max-content;
+    margin:-300px 20px auto 10px;
 }
 
 button{
@@ -23,7 +21,7 @@ button{
 
 #Add-Icon{
     height:20px;
-    colour:#8080ff;
+    color:#8080ff;
 }
 
 .form-group {

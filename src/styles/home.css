@@ -1,3 +1,48 @@
 .home{
     margin:10px 61px;
+    overflow-y: scroll;
+}
+
+.home::-webkit-scrollbar {
+    height: 5px;
+}
+
+.home::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color:#eee;
+}
+
+/* Login Page css */
+
+.login-form{
+    margin-top:15%;
+}
+
+.login-title{
+    padding:20px 0px 0px 10px;
+}
+
+.login-form-group{
+    margin-top:20px;
+}
+
+.login-button{
+    margin-top:30px;
+    border-radius:5px;
+    padding-top:10px;
+    padding-bottom:10px;
+    font-size: larger;
+    font-weight:500;
+    background-color:#2a9df4;
+}
+
+.form-control{
+    border-radius:3px;
+}
+
+@media (min-width: 768px) {
+    .login-card {
+      width: 400px;
+      margin: 0 auto;
+    }
 }
