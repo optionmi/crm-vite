@@ -8,7 +8,7 @@ function Home() {
         <Header/>
         <Sidebar/>
         <div className="home">
-          <h4>Home</h4>
+          <h4>Dashboard</h4>
         </div>
     </div>
   )

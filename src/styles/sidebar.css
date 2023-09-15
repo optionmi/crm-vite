@@ -7,6 +7,8 @@
     background-color: #333;
     overflow-x: hidden;
     transition: 0.3s;
+    z-index:1;
+    position: fixed;
   }
 
   .toggle-btn {
@@ -17,26 +19,19 @@
 
   ul {
     list-style: none;
-    padding: 0;
-    margin: 0;
+    padding-left:0;
   }
 
   li {
     padding-top:60px;
-    padding-left:8px;
     display: flex;
-    align-items: center;
-    text-align: center;
-  }
-
-  #li-1{
-    padding-top:60px;
   }
 
   a {
     text-decoration: none;
     color: white;
-    width:60px;
+    width:100%;
+    padding:10px 0px 10px 13px;
   }
 
   .hidden-text {
@@ -44,10 +39,42 @@
   }
 
   a:hover {
-    color: #8080ff;
+    background-color:rgba(0, 0,0, 0.2);
   }
 
   .sidebar a.active{
     border-left: 5px solid #8080ff;
-    color: #8080ff;
+  }
+
+  .sidebar:hover{
+    width:200px;
+  }
+
+  .sidebar-icon span{
+    display: none;
+  }
+
+  .sidebar:hover span{
+    margin-top:-7px;
+    font-size:20px;
+    font-weight:400;
+    margin-left:20px;
+    display: block;
+  }
+
+  #brand{
+    color:#fff;
+  }
+
+  #side-nav{
+    display: none;
+    background-color:rgba(0, 0,0, 0.1);
+  }
+
+  .sidebar:hover #side-nav{
+    display: block;
+  }
+
+  .sidebar:hover li{
+    padding-top:40px;
   }

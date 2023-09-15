@@ -1,0 +1,55 @@
+.card-list {
+    display: flex;
+    padding: 3rem;
+    overflow-x: scroll;
+}
+
+.card-list::-webkit-scrollbar {
+    height: 5px;
+}
+
+.card-list::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color:darkgrey;
+}
+
+.card {
+    height:450px;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    transition: .2s;
+    margin: 0;
+    scroll-snap-align: start;
+    clear: both;
+    position: relative;
+    margin-right:10px;
+    background-color:#fafafa;
+}
+
+.lead-price{
+    color:green;
+}
+
+#create-leads{
+    padding:10px 10px 10px 10px;
+    border-radius:5px;
+    font-weight:600;
+    height:max-content;
+    width:max-content;
+}
+
+#card-create-leads{
+    margin-top:20px;
+    border:2px solid;
+    font-size:20px;
+    font-weight:500;
+    background-color:#fff;
+    border-radius:5px;
+
+}
+
+#card-create-leads:hover{
+    background-color: #fff;
+    color:blue;
+}

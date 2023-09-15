@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faUsers, faBook, faUserTie} from '@fortawesome/free-solid-svg-icons';
+import { faChartPie, faUsers, faBook, faUserTie, faFilter} from '@fortawesome/free-solid-svg-icons';
 import { useLocation } from 'react-router-dom';
 
 const Sidebar = () => {
@@ -9,25 +9,50 @@ const Sidebar = () => {
 
   return (
     <div className='sidebar'>
+      <nav className="navbar" id='side-nav'>
+          <div className="container-fluid">
+              <a className="navbar-brand" style={{ backgroundColor: 'transparent' }} id='brand' href="/">CRM</a>
+          </div>
+      </nav>
       <ul>
         <li>
-          <a href="/" className={isActive('/') ? 'active' : ''} data-toggle="tooltip" data-placement="right" title="Home">
-            <FontAwesomeIcon icon={faHome} id='li-1' />
+          <a href="/" className={isActive('/') ? 'active' : ''}>
+            <div className="sidebar-icon d-flex">
+              <FontAwesomeIcon icon={faChartPie} id='li-1' />
+              <span>Dashboard</span>
+            </div>
           </a>
         </li>
         <li>
-          <a href="/publishers" className={isActive('/publishers') ? 'active' : ''} data-toggle="tooltip" data-placement="right" title="Publishers">
-            <FontAwesomeIcon icon={faUsers} />
+          <a href="/leads" className={isActive('/leads') ? 'active' : ''}>
+            <div className="sidebar-icon d-flex">
+              <FontAwesomeIcon icon={faFilter} id='li-1' />
+              <span>Leads</span>
+            </div>
           </a>
         </li>
         <li>
-          <a href="/salesperson" className={isActive('/salesperson') ? 'active' : ''} data-toggle="tooltip" data-placement="right" title="SalesPerson">
-            <FontAwesomeIcon icon={faUserTie} />
+          <a href="/publishers" className={isActive('/publishers') ? 'active' : ''}>
+            <div className="sidebar-icon d-flex">
+              <FontAwesomeIcon icon={faUsers} />
+              <span>Publishers</span>
+            </div>
           </a>
         </li>
         <li>
-          <a href="/books" className={isActive('/books') ? 'active' : ''} data-toggle="tooltip" data-placement="right" title="Books">
-            <FontAwesomeIcon icon={faBook} />
+          <a href="/salesperson" className={isActive('/salesperson') ? 'active' : ''}>
+            <div className="sidebar-icon d-flex">
+              <FontAwesomeIcon icon={faUserTie} />
+              <span>Salesperson</span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="/books" className={isActive('/books') ? 'active' : ''}>
+            <div className="sidebar-icon d-flex">
+              <FontAwesomeIcon icon={faBook} />
+              <span>Books</span>
+            </div>
           </a>
         </li>
 
