@@ -27,6 +27,7 @@ function Books() {
       <div className="publisher">
         <div className="header d-flex justify-content-between">
           <h4>Books</h4>
+          <a className='btn btn-primary create-btn' href='/create/book'>Create Books</a>
         </div>
 
         <div className="card">

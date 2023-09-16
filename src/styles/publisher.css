@@ -19,6 +19,20 @@ button{
     background: none;
 }
 
+.create-btn{
+    width:fit-content;
+    margin-bottom:20px;
+    font-weight:500;
+}
+
+.view-link:hover{
+    background:none;
+}
+
+#eye-icon{
+    color:#858585;
+}
+
 /* Create Publisher */
 
 .create-publisher-form-group{

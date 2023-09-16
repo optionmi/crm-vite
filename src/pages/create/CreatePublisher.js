@@ -42,7 +42,7 @@ function CreatePublisher() {
     if(password===confirm_password){
       e.preventDefault();
       const publisherData = {
-        name: e.target.company_name.value,
+        company_name: e.target.company_name.value,
         country: Country.getCountryByCode(selectedCountry).name,
         email:e.target.email.value,
         state: State.getStateByCode(selectedState).name,
@@ -56,8 +56,7 @@ function CreatePublisher() {
       publishersApi
         .createPublisher(publisherData, authToken)
         .then(() => {
-          console.log('log')
-          // navigate('/publishers')
+          navigate('/publishers')
         })
         .catch((error) => {
           console.error('Error creating publisher:', error);
@@ -91,7 +90,7 @@ function CreatePublisher() {
                   </div>
 
                   <div className='col-lg-6 col-md-6 col-12'>
-                    <Form.Group>
+                    <Form.Group className='create-publisher-form-group'>
                       <Form.Label>Country</Form.Label>
                       <Form.Control as="select" onChange={handleCountryChange}>
                         <option value="">Select a country</option>
@@ -117,7 +116,7 @@ function CreatePublisher() {
                   </div>
 
                   <div className='col-lg-6 col-md-6 col-12'>
-                    <Form.Group>
+                    <Form.Group className='create-publisher-form-group'>
                       <Form.Label>State</Form.Label>
                       <Form.Control as="select" onChange={handleStateChange} disabled={!selectedCountry}>
                         <option value="">Select a state</option>
@@ -143,7 +142,7 @@ function CreatePublisher() {
                   </div>
 
                   <div className='col-lg-6 col-md-6 col-12'>
-                    <Form.Group>
+                    <Form.Group className='create-publisher-form-group'>
                       <Form.Label>City</Form.Label>
                       <Form.Control as="select" disabled={!selectedState} onChange={handleCityChange}>
                       <option value="">Select a city</option>
