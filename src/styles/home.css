@@ -1,16 +1,5 @@
 .home{
     margin:10px 61px;
-    overflow-y: scroll;
-    overflow-x: scroll;
-}
-
-.home::-webkit-scrollbar {
-    height: 5px;
-}
-
-.home::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background-color:#eee;
 }
 
 /* Login Page css */

@@ -19,15 +19,20 @@ button{
     background: none;
 }
 
-#Add-Icon{
-    height:20px;
-    color:#8080ff;
+/* Create Publisher */
+
+.create-publisher-form-group{
+    margin-top:10px;
 }
 
-.form-group {
-    padding-top:10px;
+.create-publisher-button{
+    max-width:fit-content;
+    padding:10px 20px 10px 20px;
+    font-size:large;
+    font-weight:400;
 }
 
-form button {
+.create-form-btn{
+    text-align: center;
     margin-top:10px;
 }
