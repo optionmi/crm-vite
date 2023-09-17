@@ -28,6 +28,7 @@ function Salesperson() {
       <div className="publisher">
         <div className="header d-flex justify-content-between">
           <h4>Salesperson</h4>
+          <a className='btn btn-primary create-btn' href='/create/salesperson'>Create Salesperson</a>
         </div>
 
         <div className="card">

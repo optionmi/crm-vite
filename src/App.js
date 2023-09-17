@@ -8,6 +8,9 @@ import Leads from "./pages/Leads";
 import Login from "./pages/Login";
 import CreatePublisher from "./pages/create/CreatePublisher";
 import CreateLead from "./pages/create/CreateLead";
+import CreateSalesperson from "./pages/create/CreateSalesperson";
+import CreateBook from "./pages/create/createBook";
+import ViewPublisher from "./pages/view/ViewPublisher";
 import { AuthProvider } from "./context/AuthContext";
 import PrivateRoute from "./context/PrivateRoute";
 import "./App.css";
@@ -25,6 +28,7 @@ function App() {
                     <Route exact path="/login" element={<Login />} />
                     <Route element={<PrivateRoute />}>
                         <Route exact path="/" element={<Home />} />
+                        {/* Publisher Routes */}
                         <Route
                             exact
                             path="/publishers"
@@ -37,6 +41,12 @@ function App() {
                         />
                         <Route
                             exact
+                            path="/publisher/view/:id"
+                            element={<ViewPublisher />}
+                        />
+                        {/* Salesperson Routes */}
+                        <Route
+                            exact
                             path="/create/leads"
                             element={<CreateLead />}
                         />
@@ -45,7 +55,18 @@ function App() {
                             path="/salesperson"
                             element={<Salesperson />}
                         />
+                        <Route
+                            exact
+                            path="/create/salesperson"
+                            element={<CreateSalesperson />}
+                        />
+                        {/* Books Routes */}
                         <Route exact path="/books" element={<Books />} />
+                        <Route
+                            exact
+                            path="/create/book"
+                            element={<CreateBook />}
+                        />
                         <Route exact path="/leads" element={<Leads />} />
                     </Route>
                 </Routes>

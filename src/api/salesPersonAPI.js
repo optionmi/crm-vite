@@ -19,12 +19,22 @@ const salespersonAPI = {
         }
     },
 
-    createSalesperson: async (salespersonData) => {
+    createSalesperson: async (salespersonData,authToken) => {
         try {
-            const response = await axios.post(
-                `${BASE_URL}/api/salespersons/create`,
-                salespersonData
-            );
+            let response = await fetch(`${BASE_URL}/api/salesperson`, {
+                method: "POST",
+                headers: {
+                    Authorization: `Bearer ${authToken}`,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    name: salespersonData.name,
+                    email: salespersonData.email,
+                    phone_number: parseInt(salespersonData.phone_number),
+                    team: salespersonData.team,
+                    password:salespersonData.password,
+                }),
+            });
             return response.data;
         } catch (error) {
             throw error;
