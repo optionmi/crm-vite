@@ -37,6 +37,7 @@ function App() {
             {/* Books Routes */}
             <Route exact path="/books" element={<Books/>} />
             <Route exact path="/create/book" element={<CreateBook/>} />
+            {/* Leads */}
             <Route exact path="/leads" element={<Leads/>} />
           </Route>
         </Routes>
