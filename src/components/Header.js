@@ -51,7 +51,7 @@ function Header() {
                   </div>
 
                   <div className="dropdown">
-                    <button className="drop-toggle">
+                    <button className="drop-toggle text-capitalize">
                       <FontAwesomeIcon icon={faCircleUser} id='user-icon' /> &#160;  Hello {Name !== null ? Name : 'User'}
                       <FontAwesomeIcon icon={faEllipsisV} style={{ marginLeft: '10px' }} />
                     </button>

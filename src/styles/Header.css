@@ -85,7 +85,7 @@
 
 .head-icon{
     font-size:25px;
-    color:#6ac5fe;
+    color:#878787;
 }
 
 .dropdown-menu-1 {
@@ -98,6 +98,7 @@
     margin-left:-120px;
     border:0.1px solid #eee;
     z-index:1;
+    border-radius:5px;
 }
 
 .dropdown:hover .dropdown-menu-1 {

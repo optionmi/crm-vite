@@ -53,12 +53,22 @@ const booksAPI = {
         }
     },
 
-    createBook: async (bookData) => {
+    createBook: async (bookData, authToken) => {
         try {
-            const response = await axios.post(
-                `${BASE_URL}/api/books/create`,
-                bookData
-            );
+            let response = await fetch(`${BASE_URL}/api/books/create`, {
+                method: "POST",
+                headers: {
+                    Authorization: `Bearer ${authToken}`,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    title: bookData.title,
+                    author: bookData.author,
+                    standard: bookData.standard,
+                    subject: bookData.subject,
+                    price: parseInt(bookData.price)
+                }),
+            });
             return response.data;
         } catch (error) {
             throw error;
