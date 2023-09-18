@@ -19,6 +19,31 @@ const booksAPI = {
         }
     },
 
+    getBookByName: async (authToken, term) => {
+        try {
+            const headers = {
+                Authorization: `Bearer ${authToken}`,
+                "Content-Type": "application/json",
+            };
+            const searchUrl = `${BASE_URL}/api/books?search=${term}`;
+
+            const response = await fetch(searchUrl, {
+                method: "GET",
+                headers: headers,
+            });
+
+            if (!response.ok) {
+                throw new Error("Failed to fetch contacts");
+            }
+
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.error(error);
+            throw error;
+        }
+    },
+
     getBookById: async (bookId) => {
         try {
             const response = await axios.get(`${BASE_URL}/api/books/${bookId}`);
