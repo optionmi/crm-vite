@@ -17,6 +17,7 @@ import {
     faBookOpen,
     faBookAtlas,
 } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 function Header() {
     let { logoutUser, Name } = useContext(AuthContext);

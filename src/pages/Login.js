@@ -22,7 +22,7 @@ const Login = () => {
                             style={{ background: "white" }}
                         >
                             <Card.Body>
-                                <h3 className="text-muted login-title">
+                                <h3 className="text-muted text-center login-title">
                                     Welcome Back
                                 </h3>
                                 {Message && (

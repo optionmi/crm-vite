@@ -12,7 +12,7 @@ function Books() {
         booksAPI
             .getAllBooks(authToken)
             .then((data) => {
-                setBooks(data);
+                setBooks(data.books);
             })
             .catch((error) => {
                 console.error("Error fetching books:", error);

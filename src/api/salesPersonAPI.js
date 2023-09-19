@@ -19,6 +19,31 @@ const salespersonAPI = {
         }
     },
 
+    getSalespersonByName: async (authToken, term) => {
+        try {
+            const headers = {
+                Authorization: `Bearer ${authToken}`,
+                "Content-Type": "application/json",
+            };
+            const searchUrl = `${BASE_URL}/api/salesperson?search=${term}`;
+
+            const response = await fetch(searchUrl, {
+                method: "GET",
+                headers: headers,
+            });
+
+            if (!response.ok) {
+                throw new Error("Failed to fetch Salesperson");
+            }
+
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.error(error);
+            throw error;
+        }
+    },
+
     createSalesperson: async (salespersonData, authToken) => {
         try {
             let response = await fetch(`${BASE_URL}/api/salesperson`, {
