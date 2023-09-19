@@ -40,7 +40,7 @@ function ViewSalesperson() {
         <div className="publisher">
           <div className="header d-flex justify-content-between">
             <h4>View Salesperson</h4>
-            {/* <button className='btn btn-primary create-btn' onClick={handleDelete}>Delete Salesperson</button> */}
+            <button className='btn btn-primary create-btn' disabled>Delete Salesperson</button>
           </div>
 
           <Card className="create-publisher-card shadow-sm" style={{'background': 'white', 'height': 'fit-content'}} >
@@ -59,18 +59,8 @@ function ViewSalesperson() {
                         type="text"
                         value={salesperson.name}
                         name='company_name'
-                        onChange={handleInputChange}
                         required
                         />
-                      </Form.Group>
-                    </div>
-
-                    <div className='col-lg-6 col-md-6 col-12'>
-                      <Form.Group className='create-publisher-form-group'>
-                        <Form.Label>Country</Form.Label>
-                        <Form.Control as="select" disabled>
-                          <option value={publisher.country} aria-readonly>{publisher.country}</option>
-                        </Form.Control>
                       </Form.Group>
                     </div>
 
@@ -79,66 +69,8 @@ function ViewSalesperson() {
                         <Form.Label>Email</Form.Label>
                         <Form.Control className='form-contol'
                         type="email"
-                        value={publisher.email}
+                        value={salesperson.email}
                         name='email'
-                        onChange={handleInputChange}
-                        required
-                        />
-                      </Form.Group>
-                    </div>
-
-                    <div className='col-lg-6 col-md-6 col-12'>
-                      <Form.Group className='create-publisher-form-group'>
-                        <Form.Label>State</Form.Label>
-                        <Form.Control as="select" disabled>
-                          <option value={publisher.state} aria-readonly>{publisher.state}</option>
-                        </Form.Control>
-                      </Form.Group>
-                    </div>
-
-                    <div className='col-lg-6 col-md-6 col-12'>
-                      <Form.Group controlId="address" className='create-publisher-form-group'>
-                        <Form.Label>Address</Form.Label>
-                        <Form.Control className='form-contol'
-                        type="text"
-                        value={publisher.address}
-                        name='address'
-                        onChange={handleInputChange}
-                        required
-                        />
-                      </Form.Group>
-                    </div>
-
-                    <div className='col-lg-6 col-md-6 col-12'>
-                      <Form.Group className='create-publisher-form-group'>
-                        <Form.Label>City</Form.Label>
-                        <Form.Control as="select" disabled>
-                        <option value={publisher.city} aria-readonly>{publisher.city}</option>
-                        </Form.Control>
-                      </Form.Group>
-                    </div>
-
-                    <div className='col-lg-6 col-md-6 col-12'>
-                      <Form.Group controlId="contact-person" className='create-publisher-form-group'>
-                        <Form.Label>Contact Person</Form.Label>
-                        <Form.Control className='form-contol'
-                        type="text"
-                        value={publisher.contact_person}
-                        name='contact_person'
-                        onChange={handleInputChange}
-                        required
-                        />
-                      </Form.Group>
-                    </div>
-
-                    <div className='col-lg-6 col-md-6 col-12'>
-                      <Form.Group controlId="postal-code" className='create-publisher-form-group'>
-                        <Form.Label>Postal Code</Form.Label>
-                        <Form.Control className='form-contol'
-                        type="number"
-                        value={publisher.postal_code}
-                        name='postal_code'
-                        onChange={handleInputChange}
                         required
                         />
                       </Form.Group>
@@ -149,10 +81,22 @@ function ViewSalesperson() {
                         <Form.Label>Phone Number</Form.Label>
                         <Form.Control className='form-contol'
                         type="number"
-                        value={publisher.phone_number}
+                        value={salesperson.phone_number}
                         name='phone_number'
-                        onChange={handleInputChange}
                         required
+                        />
+                      </Form.Group>
+                    </div>
+
+                    <div className='col-lg-6 col-md-6 col-12'>
+                      <Form.Group controlId="phone-number" className='create-publisher-form-group'>
+                        <Form.Label>Team</Form.Label>
+                        <Form.Control className='form-contol'
+                        type="text"
+                        value={salesperson.team}
+                        name='team'
+                        required
+                        disabled
                         />
                       </Form.Group>
                     </div>
@@ -160,7 +104,7 @@ function ViewSalesperson() {
                   </div>
 
                   <div className='create-form-btn'>
-                    <Button variant="primary" type="submit" className="w-100 create-publisher-form-group create-publisher-button" >
+                    <Button disabled variant="primary" type="submit" className="w-100 create-publisher-form-group create-publisher-button" >
                       Save Changes
                     </Button>
                   </div>

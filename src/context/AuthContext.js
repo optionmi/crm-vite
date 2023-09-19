@@ -11,6 +11,7 @@ export const AuthProvider = ({children}) => {
   const [Team, setTeam] = useState(()=> sessionStorage.getItem('team') ? JSON.parse(sessionStorage.getItem('team')) :null)
   const [Name, setName] = useState(()=> sessionStorage.getItem('name') ? JSON.parse(sessionStorage.getItem('name')) :null)
   const [Email, setEmail] = useState(()=> sessionStorage.getItem('email') ? JSON.parse(sessionStorage.getItem('email')) :null)
+  const [ID, setID] = useState(()=> sessionStorage.getItem('id') ? JSON.parse(sessionStorage.getItem('id')) :null)
   const [Message,setMessage] =  useState(null)
   const [Loading,setLoading] = useState(false)
 
@@ -32,10 +33,12 @@ export const AuthProvider = ({children}) => {
         setUser_type(data.user_type)
         setName(data.name)
         setEmail(data.email)
+        setID(data.id)
         sessionStorage.setItem('token', JSON.stringify(data.token))
         sessionStorage.setItem('user_type', JSON.stringify(data.user_type))
         sessionStorage.setItem('name', JSON.stringify(data.name))
         sessionStorage.setItem('email', JSON.stringify(data.email))
+        sessionStorage.setItem('id', JSON.stringify(data.id))
         if(data.team){
           setTeam(data.team)
           sessionStorage.setItem('team', JSON.stringify(data.team))
@@ -52,10 +55,12 @@ export const AuthProvider = ({children}) => {
     setUser_type(null)
     setEmail(null)
     setName(null)
+    setID(null)
     sessionStorage.removeItem('token')
     sessionStorage.removeItem('user_type')
     sessionStorage.removeItem('email')
     sessionStorage.removeItem('name')
+    sessionStorage.removeItem('id')
     if(sessionStorage.getItem('team')){
       setTeam(null)
       sessionStorage.removeItem('team')
@@ -73,7 +78,8 @@ export const AuthProvider = ({children}) => {
     logoutUser,
     Team,
     Name,
-    Email
+    Email,
+    ID
   }
 
   return (
