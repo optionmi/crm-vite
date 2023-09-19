@@ -40,6 +40,22 @@ const salespersonAPI = {
             throw error;
         }
     },
+
+    getSalespersonById: async (authToken, id) => {
+        try {
+            let response = await fetch(`${BASE_URL}/api/salesperson/salespersons/${id}`, {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${authToken}`,
+                    "Content-Type": "application/json",
+                },
+            });
+            let data = await response.json();
+            return data;
+        } catch (error) {
+            throw error;
+        }
+    },
 };
 
 export default salespersonAPI;

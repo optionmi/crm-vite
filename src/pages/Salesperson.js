@@ -3,6 +3,9 @@ import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 import salespersonApi from '../api/salesPersonAPI';
 import AuthContext from '../context/AuthContext';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye} from '@fortawesome/free-solid-svg-icons';
 
 
 function Salesperson() {
@@ -57,6 +60,9 @@ function Salesperson() {
                     </div>
                     <div className="col-3">
                       <h6>{salesPerson.team}</h6>
+                    </div>
+                    <div className="col-3">
+                        <Link className='view-link' to={`/salesperson/view/${salesPerson.id}`}><FontAwesomeIcon icon={faEye} id='eye-icon' /></Link>
                     </div>
                   </div>
                 </div>
