@@ -1,19 +1,17 @@
-.navbar-brand{
-    margin-left:50px;
-    font-weight:600;
+.navbar-brand {
+    margin-left: 50px;
+    font-weight: 600;
     max-width: max-content;
 }
 
-.navbar{
-    background-color:#fff;
+.navbar {
+    background-color: #fff;
 }
-
 
 .dropdown {
     position: relative;
     display: inline-block;
 }
-
 
 .drop-toggle {
     color: #000;
@@ -23,9 +21,8 @@
     font-size: 18px;
     display: flex;
     align-items: center;
-    font-weight:600;
+    font-weight: 600;
 }
-
 
 .dropdown-menu {
     display: none;
@@ -34,15 +31,14 @@
     list-style: none;
     padding: 0;
     margin: 0;
-    z-index:1;
+    z-index: 1;
 }
 
 .dropdown-menu li {
     padding: 10px;
     text-align: left;
-    font-weight:500;
+    font-weight: 500;
 }
-
 
 .dropdown-menu a {
     text-decoration: none;
@@ -51,49 +47,49 @@
 }
 
 .dropdown-menu a:hover {
-    background-color:lightblue;
+    background-color: lightblue;
 }
 
 .dropdown-menu li:hover {
-    background-color:lightblue;
+    background-color: lightblue;
 }
 
 .dropdown:hover .dropdown-menu {
     display: block;
 }
 
-#user-icon{
-    font-size:30px;
-    color:#858585;
+#user-icon {
+    font-size: 30px;
+    color: #858585;
 }
 
 .circle {
     width: 38px;
     height: 38px;
-    background-color:#2a9df4;
+    background-color: #2a9df4;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top:-4px;
+    margin-top: -4px;
 }
 
-#head-plus{
-    color:#fff;
-    font-size:20px;
+#head-plus {
+    color: #fff;
+    font-size: 20px;
 }
 
-.head-icon{
-    font-size:25px;
-    color:#878787;
+.head-icon {
+    font-size: 25px;
+    color: #878787;
 }
 
-.cell{
-    padding:20px 30px 20px 30px;
+.cell {
+    padding: 20px 30px 20px 30px;
 }
 
-.text-move{
-    margin-left:-20px;
+.text-move {
+    margin-left: -20px;
 }
 
 .dropdown-menu-1 {
@@ -101,26 +97,24 @@
     position: absolute;
     background-color: #fff;
     list-style: none;
-    width:350px;
+    width: 350px;
     padding: 0;
-    margin-left:-120px;
-    border:0.1px solid #eee;
-    z-index:1;
-    border-radius:5px;
+    margin-left: -120px;
+    border: 0.1px solid #eee;
+    z-index: 1;
+    border-radius: 5px;
 }
 
 .dropdown:hover .dropdown-menu-1 {
     display: block;
 }
 
-@media (max-width:420px) {
+@media (max-width: 420px) {
     .header-btn {
-        margin-left:50px;
+        margin-left: 50px;
     }
-    .dropdown-menu-1{
-        margin-left:0px;
-        width:250px;
+    .dropdown-menu-1 {
+        margin-left: 0px;
+        width: 250px;
     }
 }
-
-

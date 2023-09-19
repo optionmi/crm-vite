@@ -19,7 +19,7 @@ const salespersonAPI = {
         }
     },
 
-    createSalesperson: async (salespersonData,authToken) => {
+    createSalesperson: async (salespersonData, authToken) => {
         try {
             let response = await fetch(`${BASE_URL}/api/salesperson`, {
                 method: "POST",
@@ -32,7 +32,7 @@ const salespersonAPI = {
                     email: salespersonData.email,
                     phone_number: parseInt(salespersonData.phone_number),
                     team: salespersonData.team,
-                    password:salespersonData.password,
+                    password: salespersonData.password,
                 }),
             });
             return response.data;
@@ -43,13 +43,16 @@ const salespersonAPI = {
 
     getSalespersonById: async (authToken, id) => {
         try {
-            let response = await fetch(`${BASE_URL}/api/salesperson/salespersons/${id}`, {
-                method: "GET",
-                headers: {
-                    Authorization: `Bearer ${authToken}`,
-                    "Content-Type": "application/json",
-                },
-            });
+            let response = await fetch(
+                `${BASE_URL}/api/salesperson/salespersons/${id}`,
+                {
+                    method: "GET",
+                    headers: {
+                        Authorization: `Bearer ${authToken}`,
+                        "Content-Type": "application/json",
+                    },
+                }
+            );
             let data = await response.json();
             return data;
         } catch (error) {

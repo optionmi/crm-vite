@@ -41,7 +41,7 @@ const booksAPI = {
                     author: bookData.author,
                     standard: bookData.standard,
                     subject: bookData.subject,
-                    price: parseInt(bookData.price)
+                    price: parseInt(bookData.price),
                 }),
             });
             return response.data;
