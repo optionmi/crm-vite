@@ -7,7 +7,7 @@ import Books from "./pages/Books";
 import Leads from "./pages/Leads";
 import Login from "./pages/Login";
 import CreatePublisher from "./pages/create/CreatePublisher";
-import CreateLead from "./pages/create/CreateLead";
+import CreateLead from "./pages/create/Leads/CreateLead";
 import CreateSalesperson from "./pages/create/CreateSalesperson";
 import CreateBook from "./pages/create/createBook";
 import ViewPublisher from "./pages/view/ViewPublisher";
@@ -47,11 +47,6 @@ function App() {
                         {/* Salesperson Routes */}
                         <Route
                             exact
-                            path="/create/leads"
-                            element={<CreateLead />}
-                        />
-                        <Route
-                            exact
                             path="/salesperson"
                             element={<Salesperson />}
                         />
@@ -67,7 +62,12 @@ function App() {
                             path="/create/book"
                             element={<CreateBook />}
                         />
+                        {/* Leads Routes */}
                         <Route exact path="/leads" element={<Leads />} />
+                        <Route
+                            path="/leads/create/:stageID"
+                            element={<CreateLead />}
+                        />
                     </Route>
                 </Routes>
             </AuthProvider>
