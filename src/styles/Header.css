@@ -85,7 +85,15 @@
 
 .head-icon{
     font-size:25px;
-    color:#6ac5fe;
+    color:#878787;
+}
+
+.cell{
+    padding:20px 30px 20px 30px;
+}
+
+.text-move{
+    margin-left:-20px;
 }
 
 .dropdown-menu-1 {
@@ -93,11 +101,12 @@
     position: absolute;
     background-color: #fff;
     list-style: none;
-    width:max-content;
+    width:350px;
     padding: 0;
     margin-left:-120px;
     border:0.1px solid #eee;
     z-index:1;
+    border-radius:5px;
 }
 
 .dropdown:hover .dropdown-menu-1 {
