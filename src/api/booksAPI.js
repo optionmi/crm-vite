@@ -13,7 +13,7 @@ const booksAPI = {
                 },
             });
             let data = await response.json();
-            return data;
+            return data.books;
         } catch (error) {
             throw error;
         }

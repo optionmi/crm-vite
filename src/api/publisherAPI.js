@@ -1,6 +1,4 @@
-import axios from "axios";
-
-const BASE_URL = "http://localhost:8000"; // Replace with your backend API URL
+const BASE_URL = "http://localhost:8000";
 
 const publishersApi = {
     // Create a new publisher
