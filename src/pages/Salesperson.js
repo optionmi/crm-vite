@@ -27,15 +27,15 @@ function Salesperson() {
         <div>
             <Header />
             <Sidebar />
-            <div className="publisher">
+            <div className="salesperson">
                 <div className="header d-flex justify-content-between">
                     <h4>Salesperson</h4>
-                    <a
+                    <Link
                         className="btn btn-primary create-btn"
-                        href="/create/salesperson"
+                        to="/create/salesperson"
                     >
                         Create Salesperson
-                    </a>
+                    </Link>
                 </div>
 
                 <div className="card">

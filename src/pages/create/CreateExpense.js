@@ -35,22 +35,22 @@ function CreateExpense() {
         <div>
             <Header />
             <Sidebar />
-            <div className="publisher">
+            <div className="expense">
                 <h4>Create Expense</h4>
                 <Card
-                    className="create-publisher-card shadow-sm"
+                    className="create-expense-card shadow-sm"
                     style={{ background: "white", height: "fit-content" }}
                 >
-                    <Card.Body className="create-publisher-card-body">
+                    <Card.Body className="create-expense-card-body">
                         <Form
-                            className="create-publisher-form"
+                            className="create-expense-form"
                             onSubmit={handleCreateExpense}
                         >
                             <div className="row">
                                 <div className="col-lg-6 col-md-6 col-12">
                                     <Form.Group
                                         controlId="date"
-                                        className="create-publisher-form-group"
+                                        className="create-expense-form-group"
                                     >
                                         <Form.Label>Date</Form.Label>
                                         <Form.Control
@@ -67,7 +67,7 @@ function CreateExpense() {
                                 <div className="col-lg-6 col-md-6 col-12">
                                     <Form.Group
                                         controlId="expense-description"
-                                        className="create-publisher-form-group"
+                                        className="create-expense-form-group"
                                     >
                                         <Form.Label>Description</Form.Label>
                                         <Form.Control
@@ -83,7 +83,7 @@ function CreateExpense() {
                                 <div className="col-lg-6 col-md-6 col-12">
                                     <Form.Group
                                         controlId="amount"
-                                        className="create-publisher-form-group"
+                                        className="create-expense-form-group"
                                     >
                                         <Form.Label>Amount</Form.Label>
                                         <Form.Control
@@ -101,7 +101,7 @@ function CreateExpense() {
                                 <Button
                                     variant="primary"
                                     type="submit"
-                                    className="w-100 create-publisher-form-group create-publisher-button"
+                                    className="w-100 create-expense-form-group create-expense-button"
                                 >
                                     Create Expense
                                 </Button>

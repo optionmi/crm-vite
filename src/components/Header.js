@@ -22,16 +22,16 @@ import { Link } from "react-router-dom";
 function Header() {
     let { logoutUser, Name } = useContext(AuthContext);
     return (
-        <div>
+        <div className="header">
             <nav className="navbar">
                 <div className="container-fluid d-flex">
-                    <a
+                    <Link
                         className="navbar-brand"
                         style={{ backgroundColor: "transparent" }}
-                        href="/"
+                        to="/"
                     >
                         CRM
-                    </a>
+                    </Link>
                     <div className="d-flex header-btn">
                         <div className="dropdown">
                             <button className="drop-toggle">
@@ -45,22 +45,22 @@ function Header() {
                             <div className="dropdown-menu-1 justify-content-center">
                                 <div className="row">
                                     <div className="col-4 cell">
-                                        <a
-                                            href="/create/leads"
+                                        <Link
+                                            to="/create/leads"
                                             className="btn head-btn"
                                         >
                                             <FontAwesomeIcon
                                                 icon={faFilter}
-                                                className="head-icon icon-left"
+                                                className="head-icon"
                                             />
                                             <h6 className="text-muted">
                                                 Leads
                                             </h6>
-                                        </a>
+                                        </Link>
                                     </div>
                                     <div className="col-4 cell">
-                                        <a
-                                            href="/create/salesperson"
+                                        <Link
+                                            to="/create/salesperson"
                                             className="btn head-btn"
                                         >
                                             <FontAwesomeIcon
@@ -70,11 +70,11 @@ function Header() {
                                             <h6 className="text-muted">
                                                 Person
                                             </h6>
-                                        </a>
+                                        </Link>
                                     </div>
                                     <div className="col-4 cell">
-                                        <a
-                                            href="/create/book"
+                                        <Link
+                                            to="/create/book"
                                             className="btn head-btn"
                                         >
                                             <FontAwesomeIcon
@@ -84,38 +84,38 @@ function Header() {
                                             <h6 className="text-muted">
                                                 Books
                                             </h6>
-                                        </a>
+                                        </Link>
                                     </div>
                                     <div className="col-4 cell">
-                                        <a
-                                            href="/create/publisher"
+                                        <Link
+                                            to="/create/publisher"
                                             className="btn head-btn"
                                         >
                                             <FontAwesomeIcon
                                                 icon={faUserTie}
-                                                className="head-icon icon-left"
+                                                className="head-icon"
                                             />
-                                            <h6 className="text-muted text-move">
+                                            <h6 className="text-muted">
                                                 Publisher
                                             </h6>
-                                        </a>
+                                        </Link>
                                     </div>
                                     <div className="col-4 cell">
-                                        <a
-                                            href="/attendance"
+                                        <Link
+                                            to="/attendance"
                                             className="btn head-btn"
                                         >
                                             <FontAwesomeIcon
                                                 icon={faClipboardUser}
                                                 className="head-icon"
                                             />
-                                            <h6 className="text-muted text-move">
+                                            <h6 className="text-muted">
                                                 Attendance
                                             </h6>
-                                        </a>
+                                        </Link>
                                     </div>
                                     <div className="col-4 cell">
-                                        <a href="/" className="btn head-btn">
+                                        <Link to="/" className="btn head-btn">
                                             <FontAwesomeIcon
                                                 icon={faBookBookmark}
                                                 className="head-icon"
@@ -123,77 +123,77 @@ function Header() {
                                             <h6 className="text-muted">
                                                 Sample
                                             </h6>
-                                        </a>
+                                        </Link>
                                     </div>
                                     <div className="col-4 cell">
-                                        <a
-                                            href="/travelling-expense"
+                                        <Link
+                                            to="/travelling-expense"
                                             className="btn head-btn"
                                         >
                                             <FontAwesomeIcon
                                                 icon={faPlane}
-                                                className="head-icon icon-left"
+                                                className="head-icon"
                                             />
-                                            <h6 className="text-muted text-move">
+                                            <h6 className="text-muted">
                                                 Expense
                                             </h6>
-                                        </a>
+                                        </Link>
                                     </div>
                                     <div className="col-4 cell">
-                                        <a
-                                            href="/attendance"
+                                        <Link
+                                            to="/attendance"
                                             className="btn head-btn"
                                         >
                                             <FontAwesomeIcon
                                                 icon={faFile}
                                                 className="head-icon"
                                             />
-                                            <h6 className="text-muted text-move">
+                                            <h6 className="text-muted">
                                                 Claim
                                             </h6>
-                                        </a>
+                                        </Link>
                                     </div>
                                     <div className="col-4 cell">
-                                        <a
-                                            href="/attendance"
+                                        <Link
+                                            to="/attendance"
                                             className="btn head-btn"
                                         >
                                             <FontAwesomeIcon
                                                 icon={faGraduationCap}
                                                 className="head-icon"
                                             />
-                                            <h6 className="text-muted text-move">
+                                            <h6 className="text-muted">
                                                 Boards
                                             </h6>
-                                        </a>
+                                        </Link>
                                     </div>
                                     <div className="col-4 cell">
-                                        <a
-                                            href="/create/publisher"
+                                        <Link
+                                            to="/create/publisher"
                                             className="btn head-btn"
                                         >
                                             <FontAwesomeIcon
                                                 icon={faBookOpen}
-                                                className="head-icon icon-left"
+                                                className="head-icon"
                                             />
-                                            <h6 className="text-muted text-move">
+                                            <h6 className="text-muted">
                                                 Series
                                             </h6>
-                                        </a>
+                                        </Link>
                                     </div>
                                     <div className="col-4 cell">
-                                        <a
-                                            href="/attendance"
+                                        <Link
+                                            to="/attendance"
                                             className="btn head-btn"
                                         >
                                             <FontAwesomeIcon
                                                 icon={faBookAtlas}
                                                 className="head-icon"
                                             />
-                                            <h6 className="text-muted text-move">
+                                            <h6 className="text-muted">
                                                 Subject
                                             </h6>
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
@@ -213,12 +213,15 @@ function Header() {
                             </button>
                             <ul className="dropdown-menu">
                                 <li>
-                                    <a href="/manage-account">Manage Account</a>
+                                    <Link to="/manage-account">
+                                        Manage Account
+                                    </Link>
                                 </li>
                                 <li>
                                     <button
                                         className="btn"
                                         onClick={logoutUser}
+                                        style={{ paddingLeft: 0 }}
                                     >
                                         Logout
                                     </button>

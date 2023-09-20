@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import attendanceAPI from "../api/attendanceAPI";
 import AuthContext from "../context/AuthContext";
+import { Link } from "react-router-dom";
 
 function Attendance() {
     let { authToken, ID } = useContext(AuthContext);
@@ -24,15 +25,15 @@ function Attendance() {
         <div>
             <Header />
             <Sidebar />
-            <div className="publisher">
+            <div className="attendance">
                 <div className="header d-flex justify-content-between">
                     <h4>Attendance</h4>
-                    <a
+                    <Link
                         className="btn btn-primary create-btn"
-                        href="/create/attendance"
+                        to="/create/attendance"
                     >
                         Mark Attendance
-                    </a>
+                    </Link>
                 </div>
                 {/* Publisher Header */}
                 <div className="card">

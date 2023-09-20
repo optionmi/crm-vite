@@ -36,7 +36,7 @@ function ViewSalesperson() {
         <div>
             <Header />
             <Sidebar />
-            <div className="publisher">
+            <div className="salesperson">
                 <div className="header d-flex justify-content-between">
                     <h4>View Salesperson</h4>
                     <button className="btn btn-primary create-btn" disabled>
@@ -45,21 +45,21 @@ function ViewSalesperson() {
                 </div>
 
                 <Card
-                    className="create-publisher-card shadow-sm"
+                    className="create-salesperson-card shadow-sm"
                     style={{ background: "white", height: "fit-content" }}
                 >
-                    <Card.Body className="create-publisher-card-body">
+                    <Card.Body className="create-salesperson-card-body">
                         {Message && (
                             <Alert variant="success" className="mb-3">
                                 {Message}
                             </Alert>
                         )}
-                        <Form className="create-publisher-form">
+                        <Form className="create-salesperson-form">
                             <div className="row">
                                 <div className="col-lg-6 col-md-6 col-12">
                                     <Form.Group
                                         controlId="company-name"
-                                        className="create-publisher-form-group"
+                                        className="create-salesperson-form-group"
                                     >
                                         <Form.Label>Name</Form.Label>
                                         <Form.Control
@@ -75,7 +75,7 @@ function ViewSalesperson() {
                                 <div className="col-lg-6 col-md-6 col-12">
                                     <Form.Group
                                         controlId="email"
-                                        className="create-publisher-form-group"
+                                        className="create-salesperson-form-group"
                                     >
                                         <Form.Label>Email</Form.Label>
                                         <Form.Control
@@ -91,7 +91,7 @@ function ViewSalesperson() {
                                 <div className="col-lg-6 col-md-6 col-12">
                                     <Form.Group
                                         controlId="phone-number"
-                                        className="create-publisher-form-group"
+                                        className="create-salesperson-form-group"
                                     >
                                         <Form.Label>Phone Number</Form.Label>
                                         <Form.Control
@@ -107,7 +107,7 @@ function ViewSalesperson() {
                                 <div className="col-lg-6 col-md-6 col-12">
                                     <Form.Group
                                         controlId="phone-number"
-                                        className="create-publisher-form-group"
+                                        className="create-salesperson-form-group"
                                     >
                                         <Form.Label>Team</Form.Label>
                                         <Form.Control
@@ -127,7 +127,7 @@ function ViewSalesperson() {
                                     disabled
                                     variant="primary"
                                     type="submit"
-                                    className="w-100 create-publisher-form-group create-publisher-button"
+                                    className="w-100 create-salesperson-form-group create-salesperson-button"
                                 >
                                     Save Changes
                                 </Button>

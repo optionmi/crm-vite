@@ -11,7 +11,7 @@
     position: fixed;
 }
 
-.toggle-btn {
+.sidebar .toggle-btn {
     cursor: pointer;
     padding: 10px;
     color: white;
@@ -34,7 +34,7 @@
     padding: 10px 0px 10px 13px;
 }
 
-.hidden-text {
+.sidebar .hidden-text {
     display: none;
 }
 
@@ -62,11 +62,12 @@
     display: block;
 }
 
-#brand {
+.sidebar #brand {
+    text-align: center;
     color: #fff;
 }
 
-#side-nav {
+.sidebar #side-nav {
     display: none;
     background-color: rgba(0, 0, 0, 0.1);
 }

@@ -11,26 +11,26 @@ function ViewAccount() {
         <div>
             <Header />
             <Sidebar />
-            <div className="publisher">
+            <div className="account">
                 <div className="header d-flex justify-content-between">
                     <h4>Manage Account</h4>
                 </div>
 
                 <Card
-                    className="create-publisher-card shadow-sm"
+                    className="manage-account-card shadow-sm"
                     style={{ background: "white", height: "fit-content" }}
                 >
-                    <Card.Body className="create-publisher-card-body">
-                        <Form className="create-publisher-form">
+                    <Card.Body className="manage-account-card-body">
+                        <Form className="manage-account-form">
                             <div className="row">
                                 <div className="col-lg-6 col-md-6 col-12">
                                     <Form.Group
                                         controlId="company-name"
-                                        className="create-publisher-form-group"
+                                        className="manage-account-form-group"
                                     >
                                         <Form.Label>Name</Form.Label>
                                         <Form.Control
-                                            className="form-contol"
+                                            className="form-contol text-capitalize"
                                             type="text"
                                             value={Name}
                                             required
@@ -42,7 +42,7 @@ function ViewAccount() {
                                 <div className="col-lg-6 col-md-6 col-12">
                                     <Form.Group
                                         controlId="email"
-                                        className="create-publisher-form-group"
+                                        className="manage-account-form-group"
                                     >
                                         <Form.Label>Email</Form.Label>
                                         <Form.Control
@@ -59,11 +59,11 @@ function ViewAccount() {
                                 <div className="col-lg-6 col-md-6 col-12">
                                     <Form.Group
                                         controlId="phone-number"
-                                        className="create-publisher-form-group"
+                                        className="manage-account-form-group"
                                     >
-                                        <Form.Label>User</Form.Label>
+                                        <Form.Label>User Type</Form.Label>
                                         <Form.Control
-                                            className="form-contol"
+                                            className="form-contol text-capitalize"
                                             type="text"
                                             value={User_type}
                                             required

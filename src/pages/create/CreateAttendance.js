@@ -34,22 +34,22 @@ function CreateAttendance() {
         <div>
             <Header />
             <Sidebar />
-            <div className="publisher">
+            <div className="attendance">
                 <h4>Mark Attendance</h4>
                 <Card
-                    className="create-publisher-card shadow-sm"
+                    className="create-attendance-card shadow-sm"
                     style={{ background: "white", height: "fit-content" }}
                 >
-                    <Card.Body className="create-publisher-card-body">
+                    <Card.Body className="create-attendance-card-body">
                         <Form
-                            className="create-publisher-form"
+                            className="create-attendance-form"
                             onSubmit={handleCreateAttendance}
                         >
                             <div className="row">
                                 <div className="col-lg-6 col-md-6 col-12">
                                     <Form.Group
                                         controlId="date"
-                                        className="create-publisher-form-group"
+                                        className="create-attendance-form-group"
                                     >
                                         <Form.Label>Date</Form.Label>
                                         <Form.Control
@@ -64,7 +64,7 @@ function CreateAttendance() {
                                 </div>
 
                                 <div className="col-lg-6 col-md-6 col-12">
-                                    <Form.Group className="create-publisher-form-group">
+                                    <Form.Group className="create-attendance-form-group">
                                         <Form.Label>Is Present</Form.Label>
                                         <Form.Control
                                             as="select"
@@ -85,7 +85,7 @@ function CreateAttendance() {
                                 <Button
                                     variant="primary"
                                     type="submit"
-                                    className="w-100 create-publisher-form-group create-publisher-button"
+                                    className="w-100 create-attendance-form-group create-attendance-button"
                                 >
                                     Mark Attendance
                                 </Button>

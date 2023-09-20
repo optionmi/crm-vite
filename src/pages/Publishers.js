@@ -30,12 +30,12 @@ function Publishers() {
             <div className="publisher">
                 <div className="header d-flex justify-content-between">
                     <h4>Publishers</h4>
-                    <a
+                    <Link
                         className="btn btn-primary create-btn"
-                        href="/create/publisher"
+                        to="/create/publisher"
                     >
                         Create Publisher
-                    </a>
+                    </Link>
                 </div>
                 {/* Publisher Header */}
                 <div className="card">
