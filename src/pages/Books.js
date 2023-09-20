@@ -12,7 +12,7 @@ function Books() {
         booksAPI
             .getAllBooks(authToken)
             .then((data) => {
-                setBooks(data.books);
+                setBooks(data);
             })
             .catch((error) => {
                 console.error("Error fetching books:", error);
@@ -35,7 +35,7 @@ function Books() {
                 </div>
 
                 <div className="card">
-                    <div className="card-body">
+                    <div className="card-header">
                         <div className="row">
                             <div className="col-3">
                                 <h5>Title</h5>
@@ -47,7 +47,8 @@ function Books() {
                                 <h5>Price</h5>
                             </div>
                         </div>
-
+                    </div>
+                    <div className="card-body scroll-cards">
                         {books.map((book) => (
                             <div
                                 className="card"

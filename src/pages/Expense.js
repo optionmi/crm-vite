@@ -35,7 +35,7 @@ function Expense() {
                 </div>
 
                 <div className="card">
-                    <div className="card-body">
+                    <div className="card-header">
                         <div className="row">
                             <div className="col-3">
                                 <h5>Date</h5>
@@ -47,7 +47,8 @@ function Expense() {
                                 <h5>Amount</h5>
                             </div>
                         </div>
-
+                    </div>
+                    <div className="card-body scroll-cards">
                         {expense.map((book) => (
                             <div
                                 className="card"

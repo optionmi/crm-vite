@@ -36,7 +36,7 @@ function Attendance() {
                 </div>
                 {/* Publisher Header */}
                 <div className="card">
-                    <div className="card-body">
+                    <div className="card-header">
                         <div className="row">
                             <div className="col-6">
                                 <h5>Date</h5>
@@ -45,7 +45,8 @@ function Attendance() {
                                 <h5>Is Present</h5>
                             </div>
                         </div>
-
+                    </div>
+                    <div className="card-body scroll-cards">
                         {attendance.map((attendance) => (
                             <div
                                 className="card"
