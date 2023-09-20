@@ -1,60 +1,60 @@
-.publisher {
+.expense {
     padding: 20px 5px 10px 61px;
 }
 
-.publisher #detail-card {
+.expense #detail-card {
     background-color: lightgray;
     height: max-content;
     margin-top: 10px;
 }
 
 
-.publisher .create-btn {
+.expense .create-btn {
     width: fit-content;
     margin-bottom: 20px;
     font-weight: 500;
 }
 
-.publisher .view-link:hover {
+.expense .view-link:hover {
     background: none;
 }
 
-.publisher #eye-icon {
+.expense #eye-icon {
     color: #858585;
 }
 
-.publisher .card-header{
+.expense .card-header{
     background-color:#f5f5f5;
 }
 
-.publisher .scroll-cards{
+.expense .scroll-cards{
     overflow-y: auto;
 }
 
-.publisher .scroll-cards::-webkit-scrollbar {
+.expense .scroll-cards::-webkit-scrollbar {
     height: 2px;
     width:5px;
 }
 
-.publisher .scroll-cards::-webkit-scrollbar-thumb {
+.expense .scroll-cards::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background-color:#858585;
 }
 
-/* Create And View Publisher */
+/* Create Expense */
 
-.publisher .create-publisher-form-group {
+.expense .create-expense-form-group {
     margin-top: 10px;
 }
 
-.publisher .create-publisher-button {
+.expense .create-expense-button {
     max-width: fit-content;
     padding: 10px 20px 10px 20px;
     font-size: large;
     font-weight: 400;
 }
 
-.publisher .create-form-btn {
+.expense .create-form-btn {
     text-align: center;
     margin-top: 10px;
 }

@@ -5,7 +5,7 @@ const BASE_URL = "http://localhost:8000";
 const leadsAPI = {
     getAllLeads: async (authToken) => {
         try {
-            let response = await fetch(`${BASE_URL}/api/leads/all`, {
+            let response = await fetch(`${BASE_URL}/api/leads`, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${authToken}`,

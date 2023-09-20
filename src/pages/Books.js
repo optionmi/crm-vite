@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import booksAPI from "../api/booksAPI";
 import AuthContext from "../context/AuthContext";
+import { Link } from "react-router-dom";
 
 function Books() {
     let { authToken } = useContext(AuthContext);
@@ -23,19 +24,19 @@ function Books() {
         <div>
             <Header />
             <Sidebar />
-            <div className="publisher">
+            <div className="books">
                 <div className="header d-flex justify-content-between">
                     <h4>Books</h4>
-                    <a
+                    <Link
                         className="btn btn-primary create-btn"
-                        href="/create/book"
+                        to="/create/book"
                     >
                         Create Books
-                    </a>
+                    </Link>
                 </div>
 
                 <div className="card">
-                    <div className="card-body">
+                    <div className="card-header">
                         <div className="row">
                             <div className="col-3">
                                 <h5>Title</h5>
@@ -47,7 +48,8 @@ function Books() {
                                 <h5>Price</h5>
                             </div>
                         </div>
-
+                    </div>
+                    <div className="card-body scroll-cards">
                         {books?.map((book) => (
                             <div
                                 className="card"

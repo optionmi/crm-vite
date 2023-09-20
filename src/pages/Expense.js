@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import expenseAPI from "../api/expenseAPI";
 import AuthContext from "../context/AuthContext";
+import { Link } from "react-router-dom";
 
 function Expense() {
     let { authToken } = useContext(AuthContext);
@@ -23,19 +24,19 @@ function Expense() {
         <div>
             <Header />
             <Sidebar />
-            <div className="publisher">
+            <div className="expense">
                 <div className="header d-flex justify-content-between">
                     <h4>Travelling Expenses</h4>
-                    <a
+                    <Link
                         className="btn btn-primary create-btn"
-                        href="/create/travelling-expense"
+                        to="/create/travelling-expense"
                     >
                         Create Expense
-                    </a>
+                    </Link>
                 </div>
 
                 <div className="card">
-                    <div className="card-body">
+                    <div className="card-header">
                         <div className="row">
                             <div className="col-3">
                                 <h5>Date</h5>
@@ -47,7 +48,8 @@ function Expense() {
                                 <h5>Amount</h5>
                             </div>
                         </div>
-
+                    </div>
+                    <div className="card-body scroll-cards">
                         {expense.map((book) => (
                             <div
                                 className="card"

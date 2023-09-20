@@ -27,19 +27,19 @@ function Salesperson() {
         <div>
             <Header />
             <Sidebar />
-            <div className="publisher">
+            <div className="salesperson">
                 <div className="header d-flex justify-content-between">
                     <h4>Salesperson</h4>
-                    <a
+                    <Link
                         className="btn btn-primary create-btn"
-                        href="/create/salesperson"
+                        to="/create/salesperson"
                     >
                         Create Salesperson
-                    </a>
+                    </Link>
                 </div>
 
                 <div className="card">
-                    <div className="card-body">
+                    <div className="card-header">
                         <div className="row">
                             <div className="col-3">
                                 <h5>Name</h5>
@@ -51,7 +51,8 @@ function Salesperson() {
                                 <h5>Team</h5>
                             </div>
                         </div>
-
+                    </div>
+                    <div className="card-body scroll-cards">
                         {salesPerson.map((salesPerson) => (
                             <div
                                 className="card"

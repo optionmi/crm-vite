@@ -34,22 +34,22 @@ function CreateBook() {
         <div>
             <Header />
             <Sidebar />
-            <div className="publisher">
+            <div className="books">
                 <h4>Create Book</h4>
                 <Card
-                    className="create-publisher-card shadow-sm"
+                    className="create-books-card shadow-sm"
                     style={{ background: "white", height: "fit-content" }}
                 >
-                    <Card.Body className="create-publisher-card-body">
+                    <Card.Body className="create-books-card-body">
                         <Form
-                            className="create-publisher-form"
+                            className="create-books-form"
                             onSubmit={handleCreateBook}
                         >
                             <div className="row">
                                 <div className="col-lg-6 col-md-6 col-12">
                                     <Form.Group
                                         controlId="name"
-                                        className="create-publisher-form-group"
+                                        className="create-books-form-group"
                                     >
                                         <Form.Label>Title</Form.Label>
                                         <Form.Control
@@ -65,7 +65,7 @@ function CreateBook() {
                                 <div className="col-lg-6 col-md-6 col-12">
                                     <Form.Group
                                         controlId="author"
-                                        className="create-publisher-form-group"
+                                        className="create-books-form-group"
                                     >
                                         <Form.Label>Author</Form.Label>
                                         <Form.Control
@@ -81,7 +81,7 @@ function CreateBook() {
                                 <div className="col-lg-6 col-md-6 col-12">
                                     <Form.Group
                                         controlId="standard"
-                                        className="create-publisher-form-group"
+                                        className="create-books-form-group"
                                     >
                                         <Form.Label>Standard</Form.Label>
                                         <Form.Control
@@ -111,7 +111,7 @@ function CreateBook() {
                                 <div className="col-lg-6 col-md-6 col-12">
                                     <Form.Group
                                         controlId="subject"
-                                        className="create-publisher-form-group"
+                                        className="create-books-form-group"
                                     >
                                         <Form.Label>Subject</Form.Label>
                                         <Form.Control
@@ -127,7 +127,7 @@ function CreateBook() {
                                 <div className="col-lg-6 col-md-6 col-12">
                                     <Form.Group
                                         controlId="price"
-                                        className="create-publisher-form-group"
+                                        className="create-books-form-group"
                                     >
                                         <Form.Label>Price</Form.Label>
                                         <Form.Control
@@ -145,7 +145,7 @@ function CreateBook() {
                                 <Button
                                     variant="primary"
                                     type="submit"
-                                    className="w-100 create-publisher-form-group create-publisher-button"
+                                    className="w-100 create-books-form-group create-books-button"
                                 >
                                     Create Book
                                 </Button>

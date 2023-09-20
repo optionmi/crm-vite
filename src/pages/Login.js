@@ -40,7 +40,7 @@ const Login = () => {
                                     >
                                         <Form.Label>Email</Form.Label>
                                         <Form.Control
-                                            className="form-contol"
+                                            className="form-contol shadow-none"
                                             type="email"
                                             placeholder="Enter email"
                                             name="email"
@@ -54,7 +54,7 @@ const Login = () => {
                                     >
                                         <Form.Label>Password</Form.Label>
                                         <Form.Control
-                                            className="form-contol"
+                                            className="form-contol shadow-none"
                                             type="password"
                                             placeholder="Password"
                                             name="password"
