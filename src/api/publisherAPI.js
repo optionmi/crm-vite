@@ -17,10 +17,10 @@ const publishersApi = {
                     state: publisherData.state,
                     city: publisherData.city,
                     address: publisherData.address,
-                    contact_person:publisherData.contact_person,
+                    contact_person: publisherData.contact_person,
                     postal_code: parseInt(publisherData.postal_code),
                     phone_number: parseInt(publisherData.phone_number),
-                    password:publisherData.password,
+                    password: publisherData.password,
                 }),
             });
             return response.data;
@@ -65,24 +65,27 @@ const publishersApi = {
 
     updatePublisher: async (publisher, authToken) => {
         try {
-            let response = await fetch(`${BASE_URL}/api/publishers/${publisher.id}`, {
-                method: "PUT",
-                headers: {
-                    Authorization: `Bearer ${authToken}`,
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    company_name: publisher.company_name,
-                    email: publisher.email,
-                    country: publisher.country,
-                    state: publisher.state,
-                    city: publisher.city,
-                    address: publisher.address,
-                    contact_person:publisher.contact_person,
-                    postal_code: parseInt(publisher.postal_code),
-                    phone_number: parseInt(publisher.phone_number)
-                }),
-            });
+            let response = await fetch(
+                `${BASE_URL}/api/publishers/${publisher.id}`,
+                {
+                    method: "PUT",
+                    headers: {
+                        Authorization: `Bearer ${authToken}`,
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        company_name: publisher.company_name,
+                        email: publisher.email,
+                        country: publisher.country,
+                        state: publisher.state,
+                        city: publisher.city,
+                        address: publisher.address,
+                        contact_person: publisher.contact_person,
+                        postal_code: parseInt(publisher.postal_code),
+                        phone_number: parseInt(publisher.phone_number),
+                    }),
+                }
+            );
             return response.data;
         } catch (error) {
             throw error;

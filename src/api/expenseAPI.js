@@ -3,20 +3,22 @@ const BASE_URL = "http://localhost:8000";
 const expenseAPI = {
     getAllExpense: async (authToken) => {
         try {
-            let response = await fetch(`${BASE_URL}/api/travelling-expense/all`, {
-                method: "GET",
-                headers: {
-                    Authorization: `Bearer ${authToken}`,
-                    "Content-Type": "application/json",
-                },
-            });
+            let response = await fetch(
+                `${BASE_URL}/api/travelling-expense/all`,
+                {
+                    method: "GET",
+                    headers: {
+                        Authorization: `Bearer ${authToken}`,
+                        "Content-Type": "application/json",
+                    },
+                }
+            );
             let data = await response.json();
             return data.expenses;
         } catch (error) {
             throw error;
         }
     },
-
 
     createExpense: async (expenseData, authToken) => {
         try {
@@ -28,7 +30,7 @@ const expenseAPI = {
                 },
                 body: JSON.stringify({
                     expense_description: expenseData.expense_description,
-                    amount: parseInt(expenseData.amount)
+                    amount: parseInt(expenseData.amount),
                 }),
             });
             return response.data;
