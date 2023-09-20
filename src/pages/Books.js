@@ -12,7 +12,7 @@ function Books() {
         booksAPI
             .getAllBooks(authToken)
             .then((data) => {
-                setBooks(data.books);
+                setBooks(data);
             })
             .catch((error) => {
                 console.error("Error fetching books:", error);
@@ -48,7 +48,7 @@ function Books() {
                             </div>
                         </div>
 
-                        {books.map((book) => (
+                        {books?.map((book) => (
                             <div
                                 className="card"
                                 id="detail-card"
