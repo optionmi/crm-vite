@@ -1,16 +1,16 @@
 import React, { useState, useContext, useEffect } from "react";
-import Header from "../../../components/Header";
-import Sidebar from "../../../components/Sidebar";
+import Header from "../../components/Header";
+import Sidebar from "../../components/Sidebar";
 import { Card, Form, Button, Tab, Tabs } from "react-bootstrap";
-import leadsApi from "../../../api/leadsAPI";
+import leadsApi from "../../api/leadsAPI";
 import { Country, State, City } from "country-state-city";
-import AuthContext from "../../../context/AuthContext";
+import AuthContext from "../../context/AuthContext";
 import { useNavigate, useParams } from "react-router-dom";
-import booksAPI from "../../../api/booksAPI";
+import booksAPI from "../../api/booksAPI";
 import Tab1 from "./components/Tab1";
 import Tab2 from "./components/Tab2";
 import Tab3 from "./components/Tab3";
-import leadsAPI from "../../../api/leadsAPI";
+import leadsAPI from "../../api/leadsAPI";
 import { Link } from "react-router-dom";
 
 function CreateLead() {
@@ -36,12 +36,13 @@ function CreateLead() {
         expected_close_date: "",
         stage: LeadStages[stageID - 1],
         salesperson_id: "",
-        contact_person_id: "",
+        contact_person_id: parseInt(""),
         organization_id: "",
-        book_id: "",
-        price: "",
-        quantity: "",
+        // book_id: "",
+        // price: "",
+        // quantity: "",
         total_amount: "",
+        lead_products: [],
     });
 
     const handleCreateLead = async (e) => {

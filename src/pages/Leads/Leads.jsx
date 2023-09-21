@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
-import Header from "../components/Header";
-import Sidebar from "../components/Sidebar";
-import leadsAPI from "../api/leadsAPI";
-import AuthContext from "../context/AuthContext";
+import Header from "../../components/Header";
+import Sidebar from "../../components/Sidebar";
+import leadsAPI from "../../api/leadsAPI";
+import AuthContext from "../../context/AuthContext";
 import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faEye, faUser } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 function Leads() {
@@ -44,27 +44,27 @@ function Leads() {
         const stage6Leads = leads.filter((lead) => lead.stage === "LOST");
 
         const stage1TotalAmount = stage1Leads.reduce(
-            (total, lead) => total + lead.leads_products.total_amount,
+            (total, lead) => total + lead.total_amount,
             0
         );
         const stage2TotalAmount = stage2Leads.reduce(
-            (total, lead) => total + lead.leads_products.total_amount,
+            (total, lead) => total + lead.total_amount,
             0
         );
         const stage3TotalAmount = stage3Leads.reduce(
-            (total, lead) => total + lead.leads_products.total_amount,
+            (total, lead) => total + lead.total_amount,
             0
         );
         const stage4TotalAmount = stage4Leads.reduce(
-            (total, lead) => total + lead.leads_products.total_amount,
+            (total, lead) => total + lead.total_amount,
             0
         );
         const stage5TotalAmount = stage5Leads.reduce(
-            (total, lead) => total + lead.leads_products.total_amount,
+            (total, lead) => total + lead.total_amount,
             0
         );
         const stage6TotalAmount = stage6Leads.reduce(
-            (total, lead) => total + lead.leads_products.total_amount,
+            (total, lead) => total + lead.total_amount,
             0
         );
 
@@ -123,14 +123,24 @@ function Leads() {
                 {leadsDetails.leads?.map((lead) => (
                     <ListGroup key={lead.id}>
                         <ListGroupItem>
-                            <strong className="fs-6">{lead.client_name}</strong>
+                            <div className="d-flex justify-content-between">
+                                <strong className="fs-6">
+                                    {lead.client_name}
+                                </strong>
+                                <Link to={`/leads/view/${lead.id}`}>
+                                    <FontAwesomeIcon
+                                        icon={faEye}
+                                        id="eye-icon"
+                                    />
+                                </Link>
+                            </div>
                             <div className="d-flex align-items-center gap-2">
                                 <FontAwesomeIcon icon={faUser} width={9} />
                                 <span>{lead.salesperson.name}</span>
                             </div>
                             <div className="d-flex align-items-center gap-2">
                                 <strong>₹</strong>
-                                <span>{lead.leads_products.total_amount}</span>
+                                <span>{lead.total_amount}</span>
                             </div>
                         </ListGroupItem>
                     </ListGroup>
@@ -143,7 +153,7 @@ function Leads() {
         <div>
             <Header />
             <Sidebar />
-            <div className="publisher">
+            <div className="publisher leads">
                 <div className="d-flex justify-content-between">
                     <h4>Leads</h4>
                     <Link
@@ -177,81 +187,6 @@ function Leads() {
                         stageID={6}
                         stage={"Lost"}
                     />
-                    {/* <div className="card rounded-lg shadow-sm">
-                        <div className="card-body">
-                            <div className="title d-flex justify-content-between">
-                                <h5 className="card-title">Follow-Up</h5>
-                                <h5 className="lead-price">&#8377; 0.00</h5>
-                            </div>
-                            <a
-                                className="btn btn-outline-primary"
-                                id="card-create-leads"
-                                href="/leads/create"
-                            >
-                                Create Leads
-                            </a>
-                        </div>
-                    </div> */}
-                    {/* <div className="card rounded-lg shadow-sm">
-                        <div className="card-body">
-                            <div className="title d-flex justify-content-between">
-                                <h5 className="card-title">Visit</h5>
-                                <h5 className="lead-price">&#8377; 0.00</h5>
-                            </div>
-                            <a
-                                className="btn btn-outline-primary"
-                                id="card-create-leads"
-                                href="/leads/create"
-                            >
-                                Create Leads
-                            </a>
-                        </div>
-                    </div>
-                    <div className="card rounded-lg shadow-sm">
-                        <div className="card-body">
-                            <div className="title d-flex justify-content-between">
-                                <h5 className="card-title">Negotiation</h5>
-                                <h5 className="lead-price">&#8377; 0.00</h5>
-                            </div>
-                            <a
-                                className="btn btn-outline-primary"
-                                id="card-create-leads"
-                                href="/leads/create"
-                            >
-                                Create Leads
-                            </a>
-                        </div>
-                    </div>
-                    <div className="card rounded-lg shadow-sm">
-                        <div className="card-body">
-                            <div className="title d-flex justify-content-between">
-                                <h5 className="card-title">Won</h5>
-                                <h5 className="lead-price">&#8377; 0.00</h5>
-                            </div>
-                            <a
-                                className="btn btn-outline-primary"
-                                id="card-create-leads"
-                                href="/leads/create"
-                            >
-                                Create Leads
-                            </a>
-                        </div>
-                    </div>
-                    <div className="card rounded-lg shadow-sm">
-                        <div className="card-body">
-                            <div className="title d-flex justify-content-between">
-                                <h5 className="card-title">Lost</h5>
-                                <h5 className="lead-price">&#8377; 0.00</h5>
-                            </div>
-                            <a
-                                className="btn btn-outline-primary"
-                                id="card-create-leads"
-                                href="/leads/create"
-                            >
-                                Create Leads
-                            </a>
-                        </div>
-                    </div> */}
                 </div>
             </div>
         </div>
