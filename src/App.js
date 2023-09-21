@@ -27,10 +27,24 @@ import "./styles/salesperson.css";
 import "./styles/attendance.css";
 import "./styles/Expense.css";
 import "./styles/account.css";
+import "./styles/claim.css";
+import "./styles/boards.css";
+import "./styles/subject.css";
+import "./styles/series.css";
+import "./styles/sample.css";
 import Attendance from "./pages/Attendance";
 import CreateAttendance from "./pages/create/CreateAttendance";
 import Expense from "./pages/Expense";
 import CreateExpense from "./pages/create/CreateExpense";
+import Claim from "./pages/Claim";
+import CreateClaim from "./pages/create/CreateClaim";
+import Boards from "./pages/Boards";
+import CreateBoards from "./pages/create/CreateBoards";
+import Subject from "./pages/Subject";
+import CreateSubject from "./pages/create/CreateSubject";
+import Series from "./pages/Series";
+import CreateSeries from "./pages/create/CreateSeries";
+import CreateSample from "./pages/create/CreateSample";
 
 function App() {
     return (
@@ -111,6 +125,45 @@ function App() {
                             exact
                             path="/create/travelling-expense"
                             element={<CreateExpense />}
+                        />
+                        {/* Travelling Claim */}
+                        <Route
+                            exact
+                            path="/travelling-claim"
+                            element={<Claim />}
+                        />
+                        <Route
+                            exact
+                            path="/create/travelling-claim"
+                            element={<CreateClaim />}
+                        />
+                        {/* Boards */}
+                        <Route exact path="/boards" element={<Boards />} />
+                        <Route
+                            exact
+                            path="/create/board"
+                            element={<CreateBoards />}
+                        />
+                        {/* Subject */}
+                        <Route exact path="/subjects" element={<Subject />} />
+                        <Route
+                            exact
+                            path="/create/subject"
+                            element={<CreateSubject />}
+                        />
+                        {/* Series */}
+                        <Route exact path="/series" element={<Series />} />
+                        <Route
+                            exact
+                            path="/create/series"
+                            element={<CreateSeries />}
+                        />
+                        {/* Sample */}
+                        {/* <Route exact path="/sample" element={<Sample />} /> */}
+                        <Route
+                            exact
+                            path="/create/sample"
+                            element={<CreateSample />}
                         />
                     </Route>
                 </Routes>

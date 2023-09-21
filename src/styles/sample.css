@@ -1,0 +1,22 @@
+/* Sample */
+.sample {
+    padding: 20px 5px 10px 61px;
+}
+
+
+/* Create Sample */
+.sample .create-sample-form-group {
+    margin-top: 10px;
+}
+
+.sample .create-sample-button {
+    max-width: fit-content;
+    padding: 10px 20px 10px 20px;
+    font-size: large;
+    font-weight: 400;
+}
+
+.sample .create-form-btn {
+    text-align: center;
+    margin-top: 10px;
+}

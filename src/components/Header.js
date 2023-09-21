@@ -115,7 +115,10 @@ function Header() {
                                         </Link>
                                     </div>
                                     <div className="col-4 cell">
-                                        <Link to="/" className="btn head-btn">
+                                        <Link
+                                            to="/create/sample"
+                                            className="btn head-btn"
+                                        >
                                             <FontAwesomeIcon
                                                 icon={faBookBookmark}
                                                 className="head-icon"
@@ -141,7 +144,7 @@ function Header() {
                                     </div>
                                     <div className="col-4 cell">
                                         <Link
-                                            to="/attendance"
+                                            to="/travelling-claim"
                                             className="btn head-btn"
                                         >
                                             <FontAwesomeIcon
@@ -155,7 +158,7 @@ function Header() {
                                     </div>
                                     <div className="col-4 cell">
                                         <Link
-                                            to="/attendance"
+                                            to="/boards"
                                             className="btn head-btn"
                                         >
                                             <FontAwesomeIcon
@@ -169,7 +172,7 @@ function Header() {
                                     </div>
                                     <div className="col-4 cell">
                                         <Link
-                                            to="/create/publisher"
+                                            to="/series"
                                             className="btn head-btn"
                                         >
                                             <FontAwesomeIcon
@@ -183,7 +186,7 @@ function Header() {
                                     </div>
                                     <div className="col-4 cell">
                                         <Link
-                                            to="/attendance"
+                                            to="/subjects"
                                             className="btn head-btn"
                                         >
                                             <FontAwesomeIcon
