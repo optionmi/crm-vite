@@ -1,9 +1,9 @@
 import { Card, Form, Tab } from "react-bootstrap";
 import { useState } from "react";
 import { useEffect, useContext } from "react";
-import contactsAPI from "../../../../api/contactsAPI";
-import AuthContext from "../../../../context/AuthContext";
-import SearchSelect from "../../../../components/SearchSelect";
+import contactsAPI from "../../../api/contactsAPI";
+import AuthContext from "../../../context/AuthContext";
+import SearchSelect from "../../../components/SearchSelect";
 
 export default function Tab2({ formData, setFormData }) {
     let { authToken } = useContext(AuthContext);

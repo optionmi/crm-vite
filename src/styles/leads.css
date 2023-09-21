@@ -1,55 +1,166 @@
-.card-list {
-    display: flex;
-    padding: 3rem;
-    overflow-x: scroll;
+div.leads {
+    .card-list {
+        display: flex;
+        padding: 3rem;
+        overflow-x: scroll;
+    }
+
+    .card-list::-webkit-scrollbar {
+        height: 5px;
+    }
+
+    .card-list::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background-color: darkgrey;
+    }
+
+    .card {
+        height: 450px;
+        min-width: 300px;
+        display: flex;
+        flex-direction: column;
+        transition: 0.2s;
+        margin: 0;
+        scroll-snap-align: start;
+        clear: both;
+        position: relative;
+        margin-right: 10px;
+        background-color: #fafafa;
+    }
+
+    .lead-price {
+        color: green;
+    }
+
+    #create-leads {
+        padding: 10px 10px 10px 10px;
+        border-radius: 5px;
+        font-weight: 600;
+        height: max-content;
+        width: max-content;
+    }
+
+    #card-create-leads {
+        margin-top: 20px;
+        border: 2px solid;
+        font-size: 20px;
+        font-weight: 500;
+        background-color: #fff;
+        border-radius: 5px;
+    }
+
+    #card-create-leads:hover {
+        background-color: #fff;
+        color: blue;
+    }
 }
 
-.card-list::-webkit-scrollbar {
-    height: 5px;
-}
+/* View Leads */
+div.custom-breadcrumb {
+    .breadcrumb {
+        list-style: none;
+        overflow: hidden;
+        font: 18px Sans-Serif;
+    }
+    .breadcrumb li {
+        float: left;
+        flex-grow: 1;
+        text-align: center;
+        cursor: pointer;
+    }
+    .breadcrumb li a {
+        width: 100%;
+        color: #333;
+        font-weight: 600;
+        text-decoration: none;
+        padding: 10px 0 10px 65px;
+        background: #c1c2c3;
+        position: relative;
+        display: block;
+        float: left;
+    }
+    .breadcrumb li a.active {
+        color: white;
+        background: #0e90d9;
+    }
 
-.card-list::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background-color:darkgrey;
-}
+    .breadcrumb li a::after {
+        content: " ";
+        display: block;
+        width: 0;
+        height: 0;
+        border-top: 50px solid transparent; /* Go big on the size, and let overflow hide */
+        border-bottom: 50px solid transparent;
+        border-left: 30px solid #c1c2c3;
+        position: absolute;
+        top: 50%;
+        margin-top: -50px;
+        left: 100%;
+        z-index: 1;
+    }
+    .breadcrumb li a.active::after {
+        border-left: 30px solid #0e90d9;
+    }
 
-.card {
-    height:450px;
-    min-width: 300px;
-    display: flex;
-    flex-direction: column;
-    transition: .2s;
-    margin: 0;
-    scroll-snap-align: start;
-    clear: both;
-    position: relative;
-    margin-right:10px;
-    background-color:#fafafa;
-}
-
-.lead-price{
-    color:green;
-}
-
-#create-leads{
-    padding:10px 10px 10px 10px;
-    border-radius:5px;
-    font-weight:600;
-    height:max-content;
-    width:max-content;
-}
-
-#card-create-leads{
-    margin-top:20px;
-    border:2px solid;
-    font-size:20px;
-    font-weight:500;
-    background-color:#fff;
-    border-radius:5px;
-
-}
-
-#card-create-leads:hover{
-    background-color: #fff;
-    color:blue;
+    .breadcrumb li a::before {
+        content: " ";
+        display: block;
+        width: 0;
+        height: 0;
+        border-top: 50px solid transparent;
+        border-bottom: 50px solid transparent;
+        border-left: 30px solid c1c2c3;
+        position: absolute;
+        top: 50%;
+        margin-top: -50px;
+        margin-left: 1px;
+        left: 100%;
+        z-index: 1;
+    }
+    /* .breadcrumb li:first-child a {
+        padding-left: 10px;
+    }
+    .breadcrumb li:nth-child(2) a {
+        background: hsla(34, 85%, 45%, 1);
+    }
+    .breadcrumb li:nth-child(2) a:after {
+        border-left-color: hsla(34, 85%, 45%, 1);
+    }
+    .breadcrumb li:nth-child(3) a {
+        background: hsla(34, 85%, 55%, 1);
+    }
+    .breadcrumb li:nth-child(3) a:after {
+        border-left-color: hsla(34, 85%, 55%, 1);
+    }
+    .breadcrumb li:nth-child(4) a {
+        background: hsla(34, 85%, 65%, 1);
+    }
+    .breadcrumb li:nth-child(4) a:after {
+        border-left-color: hsla(34, 85%, 65%, 1);
+    }
+    .breadcrumb li:nth-child(5) a {
+        background: hsla(34, 85%, 75%, 1);
+    }
+    .breadcrumb li:nth-child(5) a:after {
+        border-left-color: hsla(34, 85%, 75%, 1);
+    } */
+    .breadcrumb li:last-child a {
+        background: #c1c2c3 !important;
+        color: #333 !important;
+        /* pointer-events: none;
+        cursor: default; */
+    }
+    .breadcrumb li:last-child a::before {
+        border: 0;
+    }
+    .breadcrumb li:last-child a::after {
+        border: 0;
+    }
+    .breadcrumb li a:hover {
+        background: #0d80c8;
+        color: white;
+    }
+    .breadcrumb li a:hover:after {
+        border-left-color: #0d80c8 !important;
+    }
 }

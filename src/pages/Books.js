@@ -50,7 +50,7 @@ function Books() {
                         </div>
                     </div>
                     <div className="card-body scroll-cards">
-                        {books.map((book) => (
+                        {books?.map((book) => (
                             <div
                                 className="card"
                                 id="detail-card"

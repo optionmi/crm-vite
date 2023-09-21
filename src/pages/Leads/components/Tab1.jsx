@@ -1,8 +1,8 @@
 import { Card, Form, Tab } from "react-bootstrap";
-import salespersonAPI from "../../../../api/salesPersonAPI";
-import SearchSelect from "../../../../components/SearchSelect";
+import salespersonAPI from "../../../api/salesPersonAPI";
+import SearchSelect from "../../../components/SearchSelect";
 import { useState, useEffect, useContext } from "react";
-import AuthContext from "../../../../context/AuthContext";
+import AuthContext from "../../../context/AuthContext";
 
 export default function Tab1({ formData, setFormData }) {
     const { authToken } = useContext(AuthContext);

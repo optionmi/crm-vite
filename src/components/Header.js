@@ -46,7 +46,7 @@ function Header() {
                                 <div className="row">
                                     <div className="col-4 cell">
                                         <Link
-                                            to="/create/leads"
+                                            to="/leads/create/1"
                                             className="btn head-btn"
                                         >
                                             <FontAwesomeIcon

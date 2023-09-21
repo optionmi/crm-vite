@@ -4,10 +4,10 @@ import Home from "./pages/Home";
 import Publishers from "./pages/Publishers";
 import Salesperson from "./pages/Salesperson";
 import Books from "./pages/Books";
-import Leads from "./pages/Leads";
+import Leads from "./pages/Leads/Leads";
 import Login from "./pages/Login";
 import CreatePublisher from "./pages/create/CreatePublisher";
-import CreateLead from "./pages/create/Leads/CreateLead";
+import CreateLead from "./pages/Leads/CreateLead";
 import CreateSalesperson from "./pages/create/CreateSalesperson";
 import CreateBook from "./pages/create/createBook";
 import ViewPublisher from "./pages/view/ViewPublisher";
@@ -32,6 +32,7 @@ import "./styles/boards.css";
 import "./styles/subject.css";
 import "./styles/series.css";
 import "./styles/sample.css";
+import "./styles/utilities.css";
 import Attendance from "./pages/Attendance";
 import CreateAttendance from "./pages/create/CreateAttendance";
 import Expense from "./pages/Expense";
@@ -45,6 +46,7 @@ import CreateSubject from "./pages/create/CreateSubject";
 import Series from "./pages/Series";
 import CreateSeries from "./pages/create/CreateSeries";
 import CreateSample from "./pages/create/CreateSample";
+import ViewLead from "./pages/Leads/ViewLead";
 
 function App() {
     return (
@@ -114,6 +116,10 @@ function App() {
                         <Route
                             path="/leads/create/:stageID"
                             element={<CreateLead />}
+                        />
+                        <Route
+                            path="/leads/view/:leadID"
+                            element={<ViewLead />}
                         />
                         {/* Travelling Expense */}
                         <Route
