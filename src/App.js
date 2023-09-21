@@ -27,6 +27,7 @@ import "./styles/salesperson.css";
 import "./styles/attendance.css";
 import "./styles/Expense.css";
 import "./styles/account.css";
+import "./styles/utilities.css";
 import Attendance from "./pages/Attendance";
 import CreateAttendance from "./pages/create/CreateAttendance";
 import Expense from "./pages/Expense";
