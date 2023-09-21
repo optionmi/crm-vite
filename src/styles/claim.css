@@ -1,0 +1,60 @@
+.claim {
+    padding: 20px 5px 10px 61px;
+}
+
+.claim #detail-card {
+    background-color: lightgray;
+    height: max-content;
+    margin-top: 10px;
+}
+
+
+.claim .create-btn {
+    width: fit-content;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.claim .view-link:hover {
+    background: none;
+}
+
+.claim #eye-icon {
+    color: #858585;
+}
+
+.claim .card-header{
+    background-color:#f5f5f5;
+}
+
+.claim .scroll-cards{
+    overflow-y: auto;
+}
+
+.claim .scroll-cards::-webkit-scrollbar {
+    height: 2px;
+    width:5px;
+}
+
+.claim .scroll-cards::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color:#858585;
+}
+
+/* Create Claim */
+
+.claim .create-claim-form-group {
+    margin-top: 10px;
+}
+
+.claim .create-claim-button {
+    max-width: fit-content;
+    padding: 10px 20px 10px 20px;
+    font-size: large;
+    font-weight: 400;
+}
+
+.claim .create-form-btn {
+    text-align: center;
+    margin-top: 10px;
+}
