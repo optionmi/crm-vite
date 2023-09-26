@@ -7,7 +7,7 @@ import AuthContext from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 function CreateExpense() {
-    let { authToken } = useContext(AuthContext);
+    let { authToken, ID } = useContext(AuthContext);
 
     const navigate = useNavigate();
 
@@ -18,13 +18,13 @@ function CreateExpense() {
         const expenseData = {
             expense_description: e.target.expense_description.value,
             amount: e.target.amount.value,
+            id: ID,
         };
 
         expenseAPI
             .createExpense(expenseData, authToken)
             .then(() => {
-                console.log("Created !!!");
-                // navigate('/attendance')
+                navigate("/travelling-expense");
             })
             .catch((error) => {
                 console.error("Error creating Expense:", error);

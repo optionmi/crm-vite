@@ -58,7 +58,7 @@ function Publishers() {
                     <div className="card-body scroll-cards">
                         {/* Publisher data */}
 
-                        {publishers.map((publisher) => (
+                        {publishers?.map((publisher) => (
                             <div
                                 className="card"
                                 id="detail-card"

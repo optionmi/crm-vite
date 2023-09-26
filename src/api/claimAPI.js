@@ -31,6 +31,7 @@ const claimAPI = {
                 body: JSON.stringify({
                     claim_description: claimData.claim_description,
                     amount: parseInt(claimData.amount),
+                    id: claimData.id,
                 }),
             });
             return response.data;

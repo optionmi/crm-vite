@@ -1,11 +1,26 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Header from "../../components/Header";
 import Sidebar from "../../components/Sidebar";
 import { Card, Form, Button } from "react-bootstrap";
+import booksAPI from "../../api/booksAPI";
 import AuthContext from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 function CreateSample() {
+    let { authToken } = useContext(AuthContext);
+    const [booksId, setBooksId] = useState([]);
+
+    useEffect(() => {
+        booksAPI
+            .getAllBooks(authToken)
+            .then((data) => {
+                setBooksId(data.id);
+            })
+            .catch((error) => {
+                console.error("Error fetching books:", error);
+            });
+    }, []);
+
     return (
         <div>
             <Header />
@@ -43,6 +58,11 @@ function CreateSample() {
                                         <option value="">
                                             Select a Book Id
                                         </option>
+                                        {booksId?.map((book) => (
+                                            <option key={book} value={book}>
+                                                {book}
+                                            </option>
+                                        ))}
                                     </Form.Control>
                                 </Form.Group>
                             </div>

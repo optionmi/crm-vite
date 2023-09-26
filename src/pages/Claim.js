@@ -50,7 +50,7 @@ function Claim() {
                         </div>
                     </div>
                     <div className="card-body scroll-cards">
-                        {Claim.map((claim) => (
+                        {Claim?.map((claim) => (
                             <div
                                 className="card"
                                 id="detail-card"
@@ -59,7 +59,9 @@ function Claim() {
                                 <div className="card-body">
                                     <div className="row">
                                         <div className="col-3">
-                                            <h6>{claim.claim_date}</h6>
+                                            <h6>
+                                                {claim.claim_date.split("T")[0]}
+                                            </h6>
                                         </div>
                                         <div className="col-3">
                                             <h6>{claim.claim_description}</h6>

@@ -2,6 +2,10 @@
     padding: 20px 5px 10px 61px;
 }
 
+.books .card{
+    height:450px;
+}
+
 .books #detail-card {
     background-color: lightgray;
     height: max-content;
@@ -27,7 +31,7 @@
 }
 
 .books .scroll-cards{
-    overflow-y: auto;
+    overflow-y:scroll;
 }
 
 .books .scroll-cards::-webkit-scrollbar {

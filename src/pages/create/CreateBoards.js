@@ -20,8 +20,7 @@ function CreateBoards() {
         boardAPI
             .createBoard(boardData, authToken)
             .then(() => {
-                console.log("Marked !!!");
-                // navigate('/attendance')
+                navigate("/boards");
             })
             .catch((error) => {
                 console.error("Error creating Board:", error);

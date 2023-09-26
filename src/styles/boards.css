@@ -2,6 +2,10 @@
     padding: 20px 5px 10px 61px;
 }
 
+.boards .card {
+    height: 450px;
+}
+
 .boards #detail-card {
     background-color: lightgray;
     height: max-content;

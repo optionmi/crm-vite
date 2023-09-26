@@ -2,6 +2,10 @@
     padding: 20px 5px 10px 61px;
 }
 
+.expense .card {
+    height: 450px;
+}
+
 .expense #detail-card {
     background-color: lightgray;
     height: max-content;

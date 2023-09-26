@@ -10,6 +10,7 @@ const attendanceAPI = {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
+                    id: attendanceData.id,
                     is_present: attendanceData.is_present,
                 }),
             });

@@ -50,7 +50,7 @@ function Expense() {
                         </div>
                     </div>
                     <div className="card-body scroll-cards">
-                        {expense.map((book) => (
+                        {expense.map((expense) => (
                             <div
                                 className="card"
                                 id="detail-card"
@@ -59,7 +59,13 @@ function Expense() {
                                 <div className="card-body">
                                     <div className="row">
                                         <div className="col-3">
-                                            <h6>{expense.expense_date}</h6>
+                                            <h6>
+                                                {
+                                                    expense.expense_date.split(
+                                                        "T"
+                                                    )[0]
+                                                }
+                                            </h6>
                                         </div>
                                         <div className="col-3">
                                             <h6>
