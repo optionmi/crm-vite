@@ -109,7 +109,7 @@ function Leads() {
                 <div className="d-flex justify-content-between">
                     <h5 className="card-title">{stage}</h5>
                     <h5 className="lead-price">
-                        &#8377; {leadsDetails.totalAmount}
+                        &#8377; {leadsDetails.totalAmount?.toFixed(2)}
                     </h5>
                 </div>
                 <Link
@@ -119,7 +119,7 @@ function Leads() {
                     Create Leads
                 </Link>
             </Card.Header>
-            <Card.Body>
+            <Card.Body className="overflow-y-auto">
                 {leadsDetails.leads?.map((lead) => (
                     <ListGroup key={lead.id}>
                         <ListGroupItem>

@@ -51,18 +51,6 @@ const leadsAPI = {
         return data;
     },
 
-    updateLead: async (leadId, leadData) => {
-        try {
-            const response = await axios.put(
-                `${BASE_URL}/api/leads/${leadId}`,
-                leadData
-            );
-            return response.data;
-        } catch (error) {
-            throw error;
-        }
-    },
-
     deleteLead: async (leadId) => {
         try {
             const response = await axios.delete(
@@ -71,6 +59,148 @@ const leadsAPI = {
             return response.data;
         } catch (error) {
             throw error;
+        }
+    },
+
+    addNote: async (authToken, leadId, note) => {
+        try {
+            const response = await fetch(
+                `${BASE_URL}/api/leads/add-note/${leadId}`,
+                {
+                    method: "POST",
+                    headers: {
+                        Authorization: `Bearer ${authToken}`,
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ note }),
+                }
+            );
+
+            const data = {
+                ...(await response.json()),
+                resType: response.ok ? "success" : "danger",
+            };
+
+            return data;
+        } catch (error) {
+            return {
+                resType: "danger",
+                message: error.message,
+            };
+        }
+    },
+
+    addActivity: async (authToken, leadId, activity) => {
+        try {
+            const response = await fetch(
+                `${BASE_URL}/api/leads/add-activity/${leadId}`,
+                {
+                    method: "POST",
+                    headers: {
+                        Authorization: `Bearer ${authToken}`,
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(activity),
+                }
+            );
+
+            const data = {
+                ...(await response.json()),
+                resType: response.ok ? "success" : "danger",
+            };
+
+            return data;
+        } catch (error) {
+            return {
+                resType: "danger",
+                message: error.message,
+            };
+        }
+    },
+
+    addFile: async (authToken, leadId, fileData) => {
+        const formData = new FormData();
+        formData.append("file", fileData.file);
+        formData.append("name", fileData.name);
+        formData.append("description", fileData.description);
+
+        try {
+            const response = await fetch(
+                `${BASE_URL}/api/leads/add-file/${leadId}`,
+                {
+                    method: "POST",
+                    headers: {
+                        Authorization: `Bearer ${authToken}`,
+                    },
+                    body: formData,
+                }
+            );
+
+            const data = {
+                ...(await response.json()),
+                resType: response.ok ? "success" : "danger",
+            };
+
+            return data;
+        } catch (error) {
+            return {
+                resType: "danger",
+                message: error.message,
+            };
+        }
+    },
+
+    updateStage: async (authToken, leadId, updateData) => {
+        try {
+            const response = await fetch(
+                `${BASE_URL}/api/leads/update-stage/${leadId}`,
+                {
+                    method: "POST",
+                    headers: {
+                        Authorization: `Bearer ${authToken}`,
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(updateData),
+                }
+            );
+
+            const data = {
+                ...(await response.json()),
+                resType: response.ok ? "success" : "danger",
+            };
+
+            return data;
+        } catch (error) {
+            return {
+                resType: "danger",
+                message: error.message,
+            };
+        }
+    },
+
+    updateLead: async (authToken, leadId, lead) => {
+        try {
+            const response = await fetch(`${BASE_URL}/api/leads/${leadId}`, {
+                method: "POST",
+                headers: {
+                    Authorization: `Bearer ${authToken}`,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(lead),
+            });
+
+            // Check if the response was successful
+            const data = {
+                ...(await response.json()),
+                resType: response.ok ? "success" : "danger",
+            };
+
+            return data;
+        } catch (error) {
+            return {
+                resType: "danger",
+                message: error.message,
+            };
         }
     },
 };

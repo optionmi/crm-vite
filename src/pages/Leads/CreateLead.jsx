@@ -36,7 +36,7 @@ function CreateLead() {
         expected_close_date: "",
         stage: LeadStages[stageID - 1],
         salesperson_id: "",
-        contact_person_id: parseInt(""),
+        lead_contact_person_id: parseInt(""),
         organization_id: "",
         // book_id: "",
         // price: "",

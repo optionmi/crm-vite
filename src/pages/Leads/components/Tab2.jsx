@@ -28,6 +28,23 @@ export default function Tab2({ formData, setFormData }) {
         }
     }, [inputValue]);
 
+    // useEffect(() => {
+    //     if (formData?.lead_contact_person?.contact?.id) {
+    //         console.log("got contact id");
+    //         setFormData({
+    //             ...formData,
+    //             contact_id: parseInt(
+    //                 formData?.lead_contact_person?.contact?.id
+    //             ),
+    //             organization_id: parseInt(
+    //                 formData?.lead_contact_person?.contact?.organization?.id
+    //             ),
+    //         });
+    //     }
+    //     console.log("updated contact id");
+    //     console.log(formData);
+    // }, []);
+
     const handleContactInputChange = (value) => {
         setInputValue(value);
     };
@@ -39,9 +56,9 @@ export default function Tab2({ formData, setFormData }) {
         // console.log(selectedContact);
         setFormData({
             ...formData,
-            contact_person_id: parseInt(contacts[selectedOption.index].id),
+            lead_contact_person_id: parseInt(contacts[selectedOption.index].id),
             organization_id: parseInt(
-                contacts[selectedOption.index].organization.id
+                contacts[selectedOption.index].organization?.id
             ),
         });
     };
@@ -60,6 +77,12 @@ export default function Tab2({ formData, setFormData }) {
                     <div className="col-12">
                         <Form.Label>Name</Form.Label>
                         <SearchSelect
+                            defaultValue={{
+                                value: formData?.lead_contact_person?.contact
+                                    ?.id,
+                                label: formData?.lead_contact_person?.contact
+                                    ?.name,
+                            }}
                             options={contactOptions}
                             onChange={handleContactChange}
                             onInputChange={handleContactInputChange}

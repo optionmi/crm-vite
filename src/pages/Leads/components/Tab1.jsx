@@ -85,14 +85,14 @@ export default function Tab1({ formData, setFormData }) {
                             controlId="company-name"
                             className="create-lead-form-group"
                         >
-                            <Form.Label>Requirements</Form.Label>
+                            <Form.Label>Requirement</Form.Label>
                             <Form.Control
                                 as="textarea"
                                 className="form-contol"
                                 type="text"
-                                placeholder="Requirements"
-                                name="requirements"
-                                value={formData.requirements}
+                                placeholder="Requirement"
+                                name="requirement"
+                                value={formData.requirement}
                                 onChange={(e) =>
                                     setFormData({
                                         ...formData,
@@ -179,6 +179,10 @@ export default function Tab1({ formData, setFormData }) {
                         <Form.Group>
                             <Form.Label>Sales Owner</Form.Label>
                             <SearchSelect
+                                defaultValue={{
+                                    value: formData?.salesperson?.id,
+                                    label: formData?.salesperson?.name,
+                                }}
                                 options={salesOwnerOptions}
                                 onChange={handleSalesOwnerChange}
                                 onInputChange={handleSalesOwnerInputChange}
