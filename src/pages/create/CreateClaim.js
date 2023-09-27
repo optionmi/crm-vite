@@ -7,7 +7,7 @@ import AuthContext from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 function CreateClaim() {
-    let { authToken } = useContext(AuthContext);
+    let { authToken, ID } = useContext(AuthContext);
 
     const navigate = useNavigate();
 
@@ -18,13 +18,13 @@ function CreateClaim() {
         const claimData = {
             claim_description: e.target.claim_description.value,
             amount: e.target.amount.value,
+            id: ID,
         };
 
         claimAPI
             .createClaim(claimData, authToken)
             .then(() => {
-                console.log("Created !!!");
-                // navigate('/attendance')
+                navigate("/travelling-claim");
             })
             .catch((error) => {
                 console.error("Error creating Claim:", error);

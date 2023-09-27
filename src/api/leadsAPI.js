@@ -13,7 +13,7 @@ const leadsAPI = {
                 },
             });
             let data = await response.json();
-            return data;
+            return data.leads;
         } catch (error) {
             throw error;
         }

@@ -9,14 +9,14 @@ import { faEye } from "@fortawesome/free-solid-svg-icons";
 
 function Salesperson() {
     let { authToken } = useContext(AuthContext);
-    const [salesPerson, setsalesPerson] = useState([]);
+    const [salesPersons, setsalesPersons] = useState([]);
 
     useEffect(() => {
         // Fetch salesperson when the component mounts
         salespersonApi
             .getAllSalespersons(authToken)
             .then((data) => {
-                setsalesPerson(data);
+                setsalesPersons(data);
             })
             .catch((error) => {
                 console.error("Error fetching Sales Person:", error);
@@ -53,7 +53,7 @@ function Salesperson() {
                         </div>
                     </div>
                     <div className="card-body scroll-cards">
-                        {salesPerson.map((salesPerson) => (
+                        {salesPersons?.map((salesPerson) => (
                             <div
                                 className="card"
                                 id="detail-card"

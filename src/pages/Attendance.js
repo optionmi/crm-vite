@@ -13,7 +13,6 @@ function Attendance() {
         attendanceAPI
             .getAttendance(authToken, ID)
             .then((data) => {
-                console.log(String(data.is_present));
                 setAttendance(data);
             })
             .catch((error) => {
@@ -43,12 +42,12 @@ function Attendance() {
                                 <h5>Date</h5>
                             </div>
                             <div className="col-6">
-                                <h5>Is Present</h5>
+                                <h5>Attendance</h5>
                             </div>
                         </div>
                     </div>
                     <div className="card-body scroll-cards">
-                        {attendance.map((attendance) => (
+                        {attendance?.map((attendance) => (
                             <div
                                 className="card"
                                 id="detail-card"
@@ -62,7 +61,7 @@ function Attendance() {
                                             </h6>
                                         </div>
                                         <div className="col-6">
-                                            <h6>{attendance.ispresent}</h6>
+                                            <h6>{attendance.attendance}</h6>
                                         </div>
                                     </div>
                                 </div>

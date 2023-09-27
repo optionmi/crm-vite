@@ -31,6 +31,7 @@ const expenseAPI = {
                 body: JSON.stringify({
                     expense_description: expenseData.expense_description,
                     amount: parseInt(expenseData.amount),
+                    id: expenseData.id,
                 }),
             });
             return response.data;

@@ -2,6 +2,10 @@
     padding: 20px 5px 10px 61px;
 }
 
+.attendance .card {
+    height: 450px;
+}
+
 .attendance #detail-card {
     background-color: lightgray;
     height: max-content;

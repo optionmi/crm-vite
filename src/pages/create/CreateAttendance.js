@@ -7,7 +7,7 @@ import AuthContext from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 function CreateAttendance() {
-    let { authToken } = useContext(AuthContext);
+    let { authToken, ID } = useContext(AuthContext);
 
     const navigate = useNavigate();
 
@@ -16,14 +16,14 @@ function CreateAttendance() {
     const handleCreateAttendance = (e) => {
         e.preventDefault();
         const attendanceData = {
+            id: ID,
             is_present: e.target.is_present.value,
         };
 
         attendanceAPI
             .createAttendance(attendanceData, authToken)
             .then(() => {
-                console.log("Marked !!!");
-                // navigate('/attendance')
+                navigate("/attendance");
             })
             .catch((error) => {
                 console.error("Error creating Attendance:", error);
@@ -70,10 +70,10 @@ function CreateAttendance() {
                                             as="select"
                                             name="is_present"
                                         >
-                                            <option value="Present">
+                                            <option value="PRESENT">
                                                 Present
                                             </option>
-                                            <option value="Absent">
+                                            <option value="ABSENT">
                                                 Absent
                                             </option>
                                         </Form.Control>

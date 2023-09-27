@@ -2,6 +2,10 @@
     padding: 20px 5px 10px 61px;
 }
 
+.series .card {
+    height: 450px;
+}
+
 .series #detail-card {
     background-color: lightgray;
     height: max-content;

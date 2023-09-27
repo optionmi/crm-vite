@@ -153,7 +153,7 @@ function Leads() {
         <div>
             <Header />
             <Sidebar />
-            <div className="publisher leads">
+            <div className="leads">
                 <div className="d-flex justify-content-between">
                     <h4>Leads</h4>
                     <Link
