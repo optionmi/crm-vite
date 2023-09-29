@@ -1,15 +1,16 @@
 import React, { useEffect, useState, useContext } from "react";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
-import booksAPI from "../api/booksAPI";
 import AuthContext from "../context/AuthContext";
 import { Link } from "react-router-dom";
-import { Button, Card, Table } from "react-bootstrap";
+import seriesAPI from "../api/seriesAPI";
+import { Card, Table } from "react-bootstrap";
 import DeleteConfirmationModal from "../components/DeleteConfirmationModal";
 
-function Books() {
-    let { authToken } = useContext(AuthContext);
-    const [books, setBooks] = useState([]);
+function Series() {
+    const { authToken } = useContext(AuthContext);
+    const [series, setSeries] = useState([]);
+
     const [notification, setNotification] = useState({
         type: "",
         message: "",
@@ -17,28 +18,33 @@ function Books() {
     });
 
     useEffect(() => {
-        booksAPI
-            .getAllBooks(authToken)
-            .then((data) => {
-                setBooks(data);
-            })
-            .catch((error) => {
-                console.error("Error fetching books:", error);
-            });
+        const fetchSeries = async () => {
+            try {
+                const data = await seriesAPI.getAllSeries(authToken);
+                setSeries(data);
+            } catch (error) {
+                console.error("Error fetching series:", error);
+            }
+        };
+
+        fetchSeries();
     }, []);
 
-    const handleDelete = async (bookID) => {
-        const data = await booksAPI.deleteBook(bookID, authToken);
-        console.log(data);
-        setNotification({
-            type: data.resType,
-            message: data.message,
-            show: true,
-        });
-        if (data.resType === "success") {
-            setBooks((prevBooks) =>
-                prevBooks.filter((book) => book.id !== bookID)
-            );
+    const handleDelete = async (seriesID) => {
+        try {
+            const data = await seriesAPI.deleteSeriesByID(seriesID, authToken);
+            setNotification({
+                type: data.resType,
+                message: data.message,
+                show: true,
+            });
+            if (data.resType === "success") {
+                setSeries((prevSeries) =>
+                    prevSeries.filter((series) => series.id !== seriesID)
+                );
+            }
+        } catch (error) {
+            console.error("Error deleting Subject:", error);
         }
     };
 
@@ -46,7 +52,7 @@ function Books() {
         <div>
             <Header />
             <Sidebar />
-            <div className="books">
+            <div className="series">
                 <div className="header d-flex justify-content-between">
                     <nav aria-label="breadcrumb">
                         <ol className="breadcrumb">
@@ -57,47 +63,44 @@ function Books() {
                                 aria-current="page"
                                 className="breadcrumb-item active"
                             >
-                                Books
+                                Series
                             </li>
                         </ol>
                     </nav>
                     <Link
                         className="btn btn-primary create-btn"
-                        to="/create/book"
+                        to="/create/series"
                     >
-                        Create Books
+                        Create Series
                     </Link>
                 </div>
-
                 <Card>
-                    <div className="card-body">
+                    <Card.Body>
                         <Table striped bordered hover responsive>
                             <thead>
                                 <tr>
                                     <th style={{ width: "10%" }}>#</th>
-                                    <th style={{ width: "50%" }}>Book</th>
-                                    <th style={{ width: "10%" }}>Class</th>
-                                    <th style={{ width: "10%" }}>Price</th>
+                                    <th style={{ width: "30%" }}>Subject</th>
+                                    <th style={{ width: "40%" }}>Series</th>
                                     <th style={{ width: "20%" }}>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {books?.map((book, index) => (
-                                    <tr key={book.id}>
+                                {series.map((series, index) => (
+                                    <tr key={series.id}>
                                         <td>{index + 1}</td>
-                                        <td>{book.title}</td>
-                                        <td>{book.standard}</td>
-                                        <td>₹ {book.price}</td>
+                                        <td>{series.subject.name}</td>
+                                        <td>{series.name}</td>
                                         <td className="d-flex gap-3">
                                             <Link
                                                 className="btn btn-sm btn-success"
-                                                to={`/update-book/${book.id}`}
+                                                to={`/update-series/${series.id}`}
                                             >
                                                 Edit
                                             </Link>
                                             <DeleteConfirmationModal
                                                 handleDelete={() =>
-                                                    handleDelete(book.id)
+                                                    handleDelete(series.id)
                                                 }
                                                 notification={notification}
                                             />
@@ -106,11 +109,11 @@ function Books() {
                                 ))}
                             </tbody>
                         </Table>
-                    </div>
+                    </Card.Body>
                 </Card>
             </div>
         </div>
     );
 }
 
-export default Books;
+export default Series;

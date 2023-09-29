@@ -28,6 +28,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
 import SearchSelect from "../../components/SearchSelect";
 import TimeAgo from "react-timeago";
+import Participants from "./components/Participants";
+
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 export default function ViewLead() {
     const { leadID } = useParams();
@@ -40,6 +44,8 @@ export default function ViewLead() {
         edit: false,
         won_lost: false,
     });
+
+    const [emailBody, setEmailBody] = useState("");
 
     const handleShowModal = (modal) => {
         const modalStatus = { ...showModal, [modal]: true };
@@ -593,12 +599,12 @@ export default function ViewLead() {
                                                     ></FormControl>
                                                 </FormGroup>
 
-                                                <FormGroup>
+                                                {/* <FormGroup>
                                                     <FormLabel>
                                                         Participants
                                                     </FormLabel>
-                                                    <SearchSelect />
-                                                </FormGroup>
+                                                    <Participants />
+                                                </FormGroup> */}
                                                 <Button
                                                     variant="success"
                                                     className="my-4"
@@ -609,7 +615,35 @@ export default function ViewLead() {
                                             </Form>
                                         </Tab>
                                         <Tab eventKey="email" title="Email">
-                                            Tab content for Email
+                                            <Form className="d-flex flex-column gap-3">
+                                                <FormGroup>
+                                                    <FormLabel>To</FormLabel>
+                                                    <FormControl
+                                                        type="email"
+                                                        placeholder="Enter Email Address"
+                                                    ></FormControl>
+                                                </FormGroup>
+
+                                                <FormGroup>
+                                                    <FormLabel>
+                                                        Subject
+                                                    </FormLabel>
+                                                    <FormControl></FormControl>
+                                                </FormGroup>
+                                                <FormGroup>
+                                                    <FormLabel>
+                                                        Message
+                                                    </FormLabel>
+                                                    <ReactQuill
+                                                        theme="snow"
+                                                        value={emailBody}
+                                                        onChange={setEmailBody}
+                                                    />
+                                                </FormGroup>
+                                                <Button variant="success">
+                                                    Send
+                                                </Button>
+                                            </Form>
                                         </Tab>
                                         <Tab eventKey="file" title="File">
                                             <Form
@@ -674,22 +708,37 @@ export default function ViewLead() {
                                 <Card.Header>All</Card.Header>
                                 <Card.Body>
                                     {/* {lead.lead_notes?.length ? ( */}
-                                    <ListGroup>
+                                    <ListGroup variant="flush">
                                         {combinedRecords?.map(
                                             (record, index) => (
                                                 <ListGroupItem
                                                     key={index}
-                                                    active={
+                                                    variant={
                                                         new Date() <
                                                         new Date(record.dt_to)
+                                                            ? "info"
+                                                            : "light"
                                                     }
+                                                    // active={
+                                                    //     new Date() <
+                                                    //     new Date(record.dt_to)
+                                                    // }
                                                 >
-                                                    <small>
-                                                        {convertString(
-                                                            record.recordType
-                                                        )}{" "}
-                                                        Added
-                                                    </small>
+                                                    <div className="d-flex justify-content-between  my-2">
+                                                        <small>
+                                                            {convertString(
+                                                                record.recordType
+                                                            )}{" "}
+                                                            Added
+                                                        </small>
+                                                        <small>
+                                                            <TimeAgo
+                                                                date={
+                                                                    record.createdAt
+                                                                }
+                                                            />
+                                                        </small>
+                                                    </div>
 
                                                     {record.recordType ===
                                                         "note" && (

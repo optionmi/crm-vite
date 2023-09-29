@@ -111,6 +111,11 @@ function App() {
                             path="/create/book"
                             element={<CreateBook />}
                         />
+                        <Route
+                            exact
+                            path="/update-book/:bookID"
+                            element={<CreateBook />}
+                        />
                         {/* Leads Routes */}
                         <Route exact path="/leads" element={<Leads />} />
                         <Route
@@ -150,6 +155,11 @@ function App() {
                             path="/create/board"
                             element={<CreateBoards />}
                         />
+                        <Route
+                            exact
+                            path="/update-board/:boardID"
+                            element={<CreateBoards />}
+                        />
                         {/* Subject */}
                         <Route exact path="/subjects" element={<Subject />} />
                         <Route
@@ -157,11 +167,21 @@ function App() {
                             path="/create/subject"
                             element={<CreateSubject />}
                         />
+                        <Route
+                            exact
+                            path="/update-subject/:subjectID"
+                            element={<CreateSubject />}
+                        />
                         {/* Series */}
                         <Route exact path="/series" element={<Series />} />
                         <Route
                             exact
                             path="/create/series"
+                            element={<CreateSeries />}
+                        />
+                        <Route
+                            exact
+                            path="/update-series/:seriesID"
                             element={<CreateSeries />}
                         />
                         {/* Sample */}

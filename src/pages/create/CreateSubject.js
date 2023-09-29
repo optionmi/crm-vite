@@ -1,22 +1,32 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Header from "../../components/Header";
 import Sidebar from "../../components/Sidebar";
 import { Card, Form, Button } from "react-bootstrap";
 import subjectAPI from "../../api/subjectAPI";
 import AuthContext from "../../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function CreateSubject() {
-    let { authToken } = useContext(AuthContext);
-
+    const { authToken } = useContext(AuthContext);
     const navigate = useNavigate();
+    const { subjectID } = useParams();
+    const [subjectData, setSubjectData] = useState({ name: "" });
+
+    useEffect(() => {
+        if (subjectID) {
+            subjectAPI
+                .getSubjectByID(subjectID, authToken)
+                .then((data) => {
+                    setSubjectData(data);
+                })
+                .catch((error) => {
+                    console.error("Error fetching Subject:", error);
+                });
+        }
+    }, []);
 
     const handleCreateSubjects = (e) => {
         e.preventDefault();
-        const subjectData = {
-            name: e.target.name.value,
-        };
-
         subjectAPI
             .createSubject(subjectData, authToken)
             .then(() => {
@@ -27,12 +37,24 @@ function CreateSubject() {
             });
     };
 
+    const handleUpdateSubjectSubmit = (e) => {
+        e.preventDefault();
+        subjectAPI
+            .updateSubjectByID(subjectID, subjectData, authToken)
+            .then(() => {
+                navigate("/subjects");
+            })
+            .catch((error) => {
+                console.error("Error updating Subject:", error);
+            });
+    };
+
     return (
         <div>
             <Header />
             <Sidebar />
             <div className="subject">
-                <h4>Create Subject</h4>
+                <h4>{subjectID ? "Update" : "Create"} Subject</h4>
                 <Card
                     className="create-subject-card shadow-sm"
                     style={{ background: "white", height: "fit-content" }}
@@ -40,7 +62,11 @@ function CreateSubject() {
                     <Card.Body className="create-subject-card-body">
                         <Form
                             className="create-subject-form"
-                            onSubmit={handleCreateSubjects}
+                            onSubmit={
+                                subjectID
+                                    ? handleUpdateSubjectSubmit
+                                    : handleCreateSubjects
+                            }
                         >
                             <div className="row">
                                 <div className="col-lg-6 col-md-6 col-12">
@@ -55,6 +81,13 @@ function CreateSubject() {
                                             placeholder="Name"
                                             name="name"
                                             required
+                                            value={subjectData?.name}
+                                            onChange={(e) =>
+                                                setSubjectData({
+                                                    ...subjectData,
+                                                    name: e.target.value,
+                                                })
+                                            }
                                         />
                                     </Form.Group>
                                 </div>
@@ -66,7 +99,7 @@ function CreateSubject() {
                                     type="submit"
                                     className="w-100 create-subject-form-group create-subject-button"
                                 >
-                                    Create Subject
+                                    Save
                                 </Button>
                             </div>
                         </Form>

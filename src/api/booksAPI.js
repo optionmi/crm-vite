@@ -44,9 +44,16 @@ const booksAPI = {
         }
     },
 
-    getBookById: async (bookId) => {
+    getBookById: async (bookId, authToken) => {
         try {
-            const response = await axios.get(`${BASE_URL}/api/books/${bookId}`);
+            const response = await axios.get(
+                `${BASE_URL}/api/books/${bookId}`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${authToken}`,
+                    },
+                }
+            );
             return response.data;
         } catch (error) {
             throw error;
@@ -61,13 +68,7 @@ const booksAPI = {
                     Authorization: `Bearer ${authToken}`,
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({
-                    title: bookData.title,
-                    author: bookData.author,
-                    standard: bookData.standard,
-                    subject: bookData.subject,
-                    price: parseInt(bookData.price),
-                }),
+                body: JSON.stringify(bookData),
             });
             return response.data;
         } catch (error) {
@@ -75,11 +76,16 @@ const booksAPI = {
         }
     },
 
-    updateBook: async (bookId, bookData) => {
+    updateBook: async (bookId, bookData, authToken) => {
         try {
             const response = await axios.put(
                 `${BASE_URL}/api/books/${bookId}`,
-                bookData
+                bookData,
+                {
+                    headers: {
+                        Authorization: `Bearer ${authToken}`,
+                    },
+                }
             );
             return response.data;
         } catch (error) {
@@ -87,14 +93,28 @@ const booksAPI = {
         }
     },
 
-    deleteBook: async (bookId) => {
+    deleteBook: async (bookId, authToken) => {
         try {
             const response = await axios.delete(
-                `${BASE_URL}/api/books/${bookId}`
+                `${BASE_URL}/api/books/${bookId}`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${authToken}`,
+                    },
+                }
             );
-            return response.data;
+
+            const data = {
+                ...response.data,
+                resType: response.status === 200 ? "success" : "danger",
+            };
+
+            return data;
         } catch (error) {
-            throw error;
+            return {
+                resType: "danger",
+                message: error.message,
+            };
         }
     },
 };

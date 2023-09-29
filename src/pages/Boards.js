@@ -4,22 +4,50 @@ import Sidebar from "../components/Sidebar";
 import AuthContext from "../context/AuthContext";
 import boardAPI from "../api/boardAPI";
 import { Link } from "react-router-dom";
-import { Button, Table } from "react-bootstrap";
+import { Button, Card, Table } from "react-bootstrap";
+import DeleteConfirmationModal from "../components/DeleteConfirmationModal";
 
 function Boards() {
-    let { authToken } = useContext(AuthContext);
+    const { authToken } = useContext(AuthContext);
     const [boards, setBoards] = useState([]);
+    const [notification, setNotification] = useState({
+        type: "",
+        message: "",
+        show: false,
+    });
 
     useEffect(() => {
-        boardAPI
-            .getAllBoard(authToken)
-            .then((data) => {
+        const fetchBoards = async () => {
+            try {
+                const data = await boardAPI.getAllBoard(authToken);
                 setBoards(data);
-            })
-            .catch((error) => {
+            } catch (error) {
                 console.error("Error fetching boards:", error);
-            });
+            }
+        };
+
+        fetchBoards();
     }, []);
+
+    const handleDelete = async (boardID) => {
+        try {
+            const data = await boardAPI.deleteBoardByID(boardID, authToken);
+
+            if (data.resType === "success") {
+                setBoards((prevBoards) =>
+                    prevBoards.filter((board) => board.id !== boardID)
+                );
+            }
+
+            setNotification({
+                type: data.resType,
+                message: data.message,
+                show: true,
+            });
+        } catch (error) {
+            console.error("Error deleting board:", error);
+        }
+    };
 
     return (
         <div>
@@ -48,14 +76,7 @@ function Boards() {
                     </Link>
                 </div>
                 {/* Boards Header */}
-                <div className="card">
-                    <div className="card-header">
-                        <div className="row">
-                            <div className="col-6">
-                                <h5>Boards</h5>
-                            </div>
-                        </div>
-                    </div>
+                <Card>
                     <div className="card-body scroll-cards">
                         <Table striped bordered hover responsive>
                             <thead>
@@ -71,19 +92,25 @@ function Boards() {
                                         <td>{index + 1}</td>
                                         <td>{board.name}</td>
                                         <td className="d-flex gap-3">
-                                            <Button size="sm" variant="success">
+                                            <Link
+                                                className="btn btn-sm btn-success"
+                                                to={`/update-board/${board.id}`}
+                                            >
                                                 Edit
-                                            </Button>
-                                            <Button size="sm" variant="danger">
-                                                Delete
-                                            </Button>
+                                            </Link>
+                                            <DeleteConfirmationModal
+                                                handleDelete={() =>
+                                                    handleDelete(board.id)
+                                                }
+                                                notification={notification}
+                                            />
                                         </td>
                                     </tr>
                                 ))}
                             </tbody>
                         </Table>
                     </div>
-                </div>
+                </Card>
             </div>
         </div>
     );
