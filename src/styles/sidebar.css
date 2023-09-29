@@ -8,7 +8,6 @@
     overflow-x: hidden;
     transition: 0.3s;
     z-index: 1;
-    position: fixed;
 }
 
 .sidebar .toggle-btn {
@@ -19,19 +18,20 @@
 
 .sidebar ul {
     list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     padding-left: 0;
 }
-
 .sidebar ul li {
-    padding-top: 60px;
     display: flex;
 }
-
 .sidebar a {
     text-decoration: none;
     color: white;
     width: 100%;
-    padding: 10px 0px 10px 13px;
+    padding: 10px;
+    border-left: 5px solid transparent;
 }
 
 .sidebar .hidden-text {
@@ -74,8 +74,4 @@
 
 .sidebar:hover #side-nav {
     display: block;
-}
-
-.sidebar:hover li {
-    padding-top: 40px;
 }

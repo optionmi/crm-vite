@@ -5,6 +5,9 @@ import {
     faBook,
     faUserTie,
     faFilter,
+    faGraduationCap,
+    faBookAtlas,
+    faBookOpen,
 } from "@fortawesome/free-solid-svg-icons";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -38,6 +41,50 @@ const Sidebar = () => {
                 </li>
                 <li>
                     <Link
+                        to="/boards"
+                        className={isActive("/boards") ? "active" : ""}
+                    >
+                        <div className="sidebar-icon d-flex">
+                            <FontAwesomeIcon icon={faGraduationCap} id="li-1" />
+                            <span>Boards</span>
+                        </div>
+                    </Link>
+                </li>
+                <li>
+                    <Link
+                        to="/subjects"
+                        className={isActive("/subjects") ? "active" : ""}
+                    >
+                        <div className="sidebar-icon d-flex">
+                            <FontAwesomeIcon icon={faBookAtlas} id="li-1" />
+                            <span>Subjects</span>
+                        </div>
+                    </Link>
+                </li>
+                <li>
+                    <Link
+                        to="/series"
+                        className={isActive("/series") ? "active" : ""}
+                    >
+                        <div className="sidebar-icon d-flex">
+                            <FontAwesomeIcon icon={faBookOpen} id="li-1" />
+                            <span>Series</span>
+                        </div>
+                    </Link>
+                </li>
+                <li>
+                    <Link
+                        to="/books"
+                        className={isActive("/books") ? "active" : ""}
+                    >
+                        <div className="sidebar-icon d-flex">
+                            <FontAwesomeIcon icon={faBook} />
+                            <span>Books</span>
+                        </div>
+                    </Link>
+                </li>
+                <li>
+                    <Link
                         to="/leads"
                         className={isActive("/leads") ? "active" : ""}
                     >
@@ -66,17 +113,6 @@ const Sidebar = () => {
                         <div className="sidebar-icon d-flex">
                             <FontAwesomeIcon icon={faUserTie} />
                             <span>Salesperson</span>
-                        </div>
-                    </Link>
-                </li>
-                <li>
-                    <Link
-                        to="/books"
-                        className={isActive("/books") ? "active" : ""}
-                    >
-                        <div className="sidebar-icon d-flex">
-                            <FontAwesomeIcon icon={faBook} />
-                            <span>Books</span>
                         </div>
                     </Link>
                 </li>

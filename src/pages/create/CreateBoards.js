@@ -1,21 +1,33 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Header from "../../components/Header";
 import Sidebar from "../../components/Sidebar";
 import { Card, Form, Button } from "react-bootstrap";
 import boardAPI from "../../api/boardAPI";
 import AuthContext from "../../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function CreateBoards() {
-    let { authToken } = useContext(AuthContext);
-
+    const { authToken } = useContext(AuthContext);
     const navigate = useNavigate();
+    const { boardID } = useParams();
+    const [boardData, setBoardData] = useState({ name: "" });
+
+    useEffect(() => {
+        if (boardID) {
+            boardAPI
+                .getBoardByID(boardID, authToken)
+                .then((data) => {
+                    setBoardData({ name: data.name });
+                })
+                .catch((error) => {
+                    console.error("Error fetching Board:", error);
+                });
+        }
+    }, []);
 
     const handleCreateBoards = (e) => {
         e.preventDefault();
-        const boardData = {
-            name: e.target.name.value,
-        };
+        // setBoardData({ name: e.target.value });
 
         boardAPI
             .createBoard(boardData, authToken)
@@ -27,12 +39,19 @@ function CreateBoards() {
             });
     };
 
+    const handleUpdateBoardSubmit = (e) => {
+        e.preventDefault();
+        boardAPI.updateBoardByID(boardID, boardData, authToken).then(() => {
+            navigate("/boards");
+        });
+    };
+
     return (
         <div>
             <Header />
             <Sidebar />
             <div className="boards">
-                <h4>Create Board</h4>
+                <h4>{boardID ? "Update" : "Create"} Board</h4>
                 <Card
                     className="create-boards-card shadow-sm"
                     style={{ background: "white", height: "fit-content" }}
@@ -40,7 +59,11 @@ function CreateBoards() {
                     <Card.Body className="create-boards-card-body">
                         <Form
                             className="create-boards-form"
-                            onSubmit={handleCreateBoards}
+                            onSubmit={
+                                boardID
+                                    ? handleUpdateBoardSubmit
+                                    : handleCreateBoards
+                            }
                         >
                             <div className="row">
                                 <div className="col-lg-6 col-md-6 col-12">
@@ -50,11 +73,17 @@ function CreateBoards() {
                                     >
                                         <Form.Label>Name</Form.Label>
                                         <Form.Control
-                                            className="form-contol"
                                             type="text"
                                             placeholder="Name"
                                             name="name"
                                             required
+                                            value={boardData.name}
+                                            onChange={(e) =>
+                                                setBoardData({
+                                                    ...boardData,
+                                                    name: e.target.value,
+                                                })
+                                            }
                                         />
                                     </Form.Group>
                                 </div>
@@ -66,7 +95,7 @@ function CreateBoards() {
                                     type="submit"
                                     className="w-100 create-boards-form-group create-boards-button"
                                 >
-                                    Create Board
+                                    Save
                                 </Button>
                             </div>
                         </Form>

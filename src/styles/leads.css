@@ -11,8 +11,12 @@ div.leads {
     .card-list::-webkit-scrollbar {
         height: 5px;
     }
+    .card-body::-webkit-scrollbar {
+        width: 5px;
+    }
 
-    .card-list::-webkit-scrollbar-thumb {
+    .card-list::-webkit-scrollbar-thumb,
+    .card-body::-webkit-scrollbar-thumb {
         border-radius: 10px;
         background-color: darkgrey;
     }
@@ -86,6 +90,10 @@ div.custom-breadcrumb {
         color: white;
         background: #0e90d9;
     }
+    .breadcrumb li a.bg-success,
+    .breadcrumb li a.bg-danger {
+        color: white;
+    }
 
     .breadcrumb li a::after {
         content: " ";
@@ -105,6 +113,13 @@ div.custom-breadcrumb {
         border-left: 30px solid #0e90d9;
     }
 
+    .breadcrumb li a.bg-success::after {
+        border-left: 30px solid #198754;
+    }
+    .breadcrumb li a.bg-danger::after {
+        border-left: 30px solid #dc3545;
+    }
+
     .breadcrumb li a::before {
         content: " ";
         display: block;
@@ -112,7 +127,7 @@ div.custom-breadcrumb {
         height: 0;
         border-top: 50px solid transparent;
         border-bottom: 50px solid transparent;
-        border-left: 30px solid c1c2c3;
+        border-left: 30px solid white;
         position: absolute;
         top: 50%;
         margin-top: -50px;
@@ -147,23 +162,23 @@ div.custom-breadcrumb {
     .breadcrumb li:nth-child(5) a:after {
         border-left-color: hsla(34, 85%, 75%, 1);
     } */
-    .breadcrumb li:last-child a {
+    /* .breadcrumb li:last-child a {
         background: #c1c2c3 !important;
         color: #333 !important;
-        /* pointer-events: none;
-        cursor: default; */
-    }
+    } */
     .breadcrumb li:last-child a::before {
         border: 0;
     }
     .breadcrumb li:last-child a::after {
         border: 0;
     }
-    .breadcrumb li a:hover {
+    /* .breadcrumb li a:hover {
         background: #0d80c8;
         color: white;
+        filter: brightness(110%);
     }
-    .breadcrumb li a:hover:after {
+    .breadcrumb li a:hover::after {
         border-left-color: #0d80c8 !important;
-    }
+        filter: brightness(110%) !important;
+    } */
 }

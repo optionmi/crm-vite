@@ -34,6 +34,87 @@ const subjectAPI = {
             throw error;
         }
     },
+
+    updateSubjectByID: async (subjectID, subjectData, authToken) => {
+        try {
+            let response = await fetch(
+                `${BASE_URL}/api/subjects/${subjectID}`,
+                {
+                    method: "PUT",
+                    headers: {
+                        Authorization: `Bearer ${authToken}`,
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        name: subjectData.name,
+                    }),
+                }
+            );
+            const data = {
+                ...(await response.json()),
+                resType: response.ok ? "success" : "danger",
+            };
+
+            return data;
+        } catch (error) {
+            return {
+                resType: "danger",
+                message: error.message,
+            };
+        }
+    },
+
+    getSubjectByID: async (subjectID, authToken) => {
+        try {
+            let response = await fetch(
+                `${BASE_URL}/api/subjects/${subjectID}`,
+                {
+                    method: "GET",
+                    headers: {
+                        Authorization: `Bearer ${authToken}`,
+                        "Content-Type": "application/json",
+                    },
+                }
+            );
+            const data = {
+                ...(await response.json()),
+                resType: response.ok ? "success" : "danger",
+            };
+
+            return data;
+        } catch (error) {
+            return {
+                resType: "danger",
+                message: error.message,
+            };
+        }
+    },
+
+    deleteSubjectByID: async (subjectID, authToken) => {
+        try {
+            let response = await fetch(
+                `${BASE_URL}/api/subjects/${subjectID}`,
+                {
+                    method: "DELETE",
+                    headers: {
+                        Authorization: `Bearer ${authToken}`,
+                        "Content-Type": "application/json",
+                    },
+                }
+            );
+            const data = {
+                ...(await response.json()),
+                resType: response.ok ? "success" : "danger",
+            };
+
+            return data;
+        } catch (error) {
+            return {
+                resType: "danger",
+                message: error.message,
+            };
+        }
+    },
 };
 
 export default subjectAPI;

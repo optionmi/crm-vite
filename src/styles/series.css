@@ -2,9 +2,9 @@
     padding: 20px 5px 10px 61px;
 }
 
-.series .card {
+/* .series .card {
     height: 450px;
-}
+} */
 
 .series #detail-card {
     background-color: lightgray;
@@ -12,29 +12,28 @@
     margin-top: 10px;
 }
 
-
 .series .create-btn {
     width: fit-content;
     margin-bottom: 20px;
     font-weight: 500;
 }
 
-.series .card-header{
-    background-color:#f5f5f5;
+.series .card-header {
+    background-color: #f5f5f5;
 }
 
-.series .scroll-cards{
+.series .scroll-cards {
     overflow-y: auto;
 }
 
 .series .scroll-cards::-webkit-scrollbar {
     height: 2px;
-    width:5px;
+    width: 5px;
 }
 
 .series .scroll-cards::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background-color:#858585;
+    background-color: #858585;
 }
 
 /* Create Series */

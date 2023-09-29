@@ -34,36 +34,36 @@ function Leads() {
     }, []);
 
     useEffect(() => {
-        const stage1Leads = leads.filter((lead) => lead.stage === "NEW");
-        const stage2Leads = leads.filter((lead) => lead.stage === "FOLLOW_UP");
-        const stage3Leads = leads.filter((lead) => lead.stage === "VISIT");
-        const stage4Leads = leads.filter(
+        const stage1Leads = leads?.filter((lead) => lead.stage === "NEW");
+        const stage2Leads = leads?.filter((lead) => lead.stage === "FOLLOW_UP");
+        const stage3Leads = leads?.filter((lead) => lead.stage === "VISIT");
+        const stage4Leads = leads?.filter(
             (lead) => lead.stage === "NEGOTIATION"
         );
-        const stage5Leads = leads.filter((lead) => lead.stage === "WON");
-        const stage6Leads = leads.filter((lead) => lead.stage === "LOST");
+        const stage5Leads = leads?.filter((lead) => lead.stage === "WON");
+        const stage6Leads = leads?.filter((lead) => lead.stage === "LOST");
 
-        const stage1TotalAmount = stage1Leads.reduce(
+        const stage1TotalAmount = stage1Leads?.reduce(
             (total, lead) => total + lead.total_amount,
             0
         );
-        const stage2TotalAmount = stage2Leads.reduce(
+        const stage2TotalAmount = stage2Leads?.reduce(
             (total, lead) => total + lead.total_amount,
             0
         );
-        const stage3TotalAmount = stage3Leads.reduce(
+        const stage3TotalAmount = stage3Leads?.reduce(
             (total, lead) => total + lead.total_amount,
             0
         );
-        const stage4TotalAmount = stage4Leads.reduce(
+        const stage4TotalAmount = stage4Leads?.reduce(
             (total, lead) => total + lead.total_amount,
             0
         );
-        const stage5TotalAmount = stage5Leads.reduce(
+        const stage5TotalAmount = stage5Leads?.reduce(
             (total, lead) => total + lead.total_amount,
             0
         );
-        const stage6TotalAmount = stage6Leads.reduce(
+        const stage6TotalAmount = stage6Leads?.reduce(
             (total, lead) => total + lead.total_amount,
             0
         );
@@ -109,17 +109,17 @@ function Leads() {
                 <div className="d-flex justify-content-between">
                     <h5 className="card-title">{stage}</h5>
                     <h5 className="lead-price">
-                        &#8377; {leadsDetails.totalAmount}
+                        &#8377; {leadsDetails.totalAmount?.toFixed(2)}
                     </h5>
                 </div>
                 <Link
                     to={`/leads/create/${stageID}`}
                     className="btn btn-sm btn-primary"
                 >
-                    Create Leads
+                    Create Lead
                 </Link>
             </Card.Header>
-            <Card.Body>
+            <Card.Body className="overflow-y-auto">
                 {leadsDetails.leads?.map((lead) => (
                     <ListGroup key={lead.id}>
                         <ListGroupItem>
@@ -154,13 +154,25 @@ function Leads() {
             <Header />
             <Sidebar />
             <div className="leads">
-                <div className="d-flex justify-content-between">
-                    <h4>Leads</h4>
+                <div className="d-flex justify-content-between align-items-center">
+                    <nav aria-label="breadcrumb">
+                        <ol className="breadcrumb">
+                            <li className="breadcrumb-item">
+                                <Link to="/">Dashboard</Link>
+                            </li>
+                            <li
+                                aria-current="page"
+                                className="breadcrumb-item active"
+                            >
+                                Leads
+                            </li>
+                        </ol>
+                    </nav>
                     <Link
                         className="btn btn-sm btn-primary"
                         to="/leads/create/1"
                     >
-                        Create Leads
+                        Create Lead
                     </Link>
                 </div>
 
