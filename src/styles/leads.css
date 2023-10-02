@@ -1,5 +1,4 @@
 div.leads {
-
     padding: 20px 5px 10px 61px;
 
     .card-list {
@@ -181,4 +180,7 @@ div.custom-breadcrumb {
         border-left-color: #0d80c8 !important;
         filter: brightness(110%) !important;
     } */
+}
+.readonly .ql-toolbar {
+    display: none;
 }

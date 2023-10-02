@@ -96,6 +96,17 @@ const Sidebar = () => {
                 </li>
                 <li>
                     <Link
+                        to="/quotes"
+                        className={isActive("/quotes") ? "active" : ""}
+                    >
+                        <div className="sidebar-icon d-flex">
+                            <FontAwesomeIcon icon={faFilter} id="li-1" />
+                            <span>Quotes</span>
+                        </div>
+                    </Link>
+                </li>
+                <li>
+                    <Link
                         to="/publishers"
                         className={isActive("/publishers") ? "active" : ""}
                     >

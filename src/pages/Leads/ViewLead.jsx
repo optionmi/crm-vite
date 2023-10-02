@@ -32,6 +32,7 @@ import Participants from "./components/Participants";
 
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import emailAPI from "../../api/emailAPI";
 
 export default function ViewLead() {
     const { leadID } = useParams();
@@ -44,8 +45,6 @@ export default function ViewLead() {
         edit: false,
         won_lost: false,
     });
-
-    const [emailBody, setEmailBody] = useState("");
 
     const handleShowModal = (modal) => {
         const modalStatus = { ...showModal, [modal]: true };
@@ -79,11 +78,13 @@ export default function ViewLead() {
                 (activity) => (activity.recordType = "activity")
             );
             lead.lead_files.map((file) => (file.recordType = "file"));
+            lead.lead_emails.map((file) => (file.recordType = "email"));
 
             const combinedRecordsArr = [
                 ...lead.lead_notes,
                 ...lead.lead_activities,
                 ...lead.lead_files,
+                ...lead.lead_emails,
             ];
 
             combinedRecordsArr.sort((a, b) => {
@@ -347,6 +348,31 @@ export default function ViewLead() {
         });
     };
     // End Edit Lead
+
+    // Email
+    const [emailData, setEmailData] = useState({
+        to: "",
+        subject: "",
+        message: "",
+        leadID,
+    });
+
+    const handleSendEmailSubmit = (e) => {
+        e.preventDefault();
+        emailAPI.sendEmail(authToken, emailData).then((data) => {
+            setMessage({ message: data.message, type: data.resType });
+            setShow(true);
+            if (data.resType === "success") {
+                setEmailData({
+                    leadID,
+                    to: "",
+                    subject: "",
+                    message: "",
+                });
+            }
+        });
+    };
+    // End Email
 
     return (
         <>
@@ -614,13 +640,26 @@ export default function ViewLead() {
                                                 </Button>
                                             </Form>
                                         </Tab>
+                                        {/* Email */}
                                         <Tab eventKey="email" title="Email">
-                                            <Form className="d-flex flex-column gap-3">
+                                            <Form
+                                                className="d-flex flex-column gap-3"
+                                                onSubmit={handleSendEmailSubmit}
+                                            >
                                                 <FormGroup>
                                                     <FormLabel>To</FormLabel>
                                                     <FormControl
                                                         type="email"
                                                         placeholder="Enter Email Address"
+                                                        required
+                                                        value={emailData.to}
+                                                        onChange={(e) =>
+                                                            setEmailData({
+                                                                ...emailData,
+                                                                to: e.target
+                                                                    .value,
+                                                            })
+                                                        }
                                                     ></FormControl>
                                                 </FormGroup>
 
@@ -628,7 +667,20 @@ export default function ViewLead() {
                                                     <FormLabel>
                                                         Subject
                                                     </FormLabel>
-                                                    <FormControl></FormControl>
+                                                    <FormControl
+                                                        required
+                                                        value={
+                                                            emailData.subject
+                                                        }
+                                                        onChange={(e) =>
+                                                            setEmailData({
+                                                                ...emailData,
+                                                                subject:
+                                                                    e.target
+                                                                        .value,
+                                                            })
+                                                        }
+                                                    ></FormControl>
                                                 </FormGroup>
                                                 <FormGroup>
                                                     <FormLabel>
@@ -636,11 +688,21 @@ export default function ViewLead() {
                                                     </FormLabel>
                                                     <ReactQuill
                                                         theme="snow"
-                                                        value={emailBody}
-                                                        onChange={setEmailBody}
+                                                        value={
+                                                            emailData.message
+                                                        }
+                                                        onChange={(value) =>
+                                                            setEmailData({
+                                                                ...emailData,
+                                                                message: value,
+                                                            })
+                                                        }
                                                     />
                                                 </FormGroup>
-                                                <Button variant="success">
+                                                <Button
+                                                    variant="success"
+                                                    type="submit"
+                                                >
                                                     Send
                                                 </Button>
                                             </Form>
@@ -726,10 +788,12 @@ export default function ViewLead() {
                                                 >
                                                     <div className="d-flex justify-content-between  my-2">
                                                         <small>
-                                                            {convertString(
-                                                                record.recordType
-                                                            )}{" "}
-                                                            Added
+                                                            {record.recordType ===
+                                                            "email"
+                                                                ? "Email Sent"
+                                                                : `${convertString(
+                                                                      record.recordType
+                                                                  )} Added`}
                                                         </small>
                                                         <small>
                                                             <TimeAgo
@@ -739,6 +803,25 @@ export default function ViewLead() {
                                                             />
                                                         </small>
                                                     </div>
+
+                                                    {record.recordType ===
+                                                        "email" && (
+                                                        <>
+                                                            <p className="p-2 rounded">
+                                                                {record.subject}
+                                                            </p>
+
+                                                            <Card className="bg-warning readonly">
+                                                                <ReactQuill
+                                                                    theme="snow"
+                                                                    value={
+                                                                        record.message
+                                                                    }
+                                                                    readOnly
+                                                                />
+                                                            </Card>
+                                                        </>
+                                                    )}
 
                                                     {record.recordType ===
                                                         "note" && (
@@ -802,6 +885,9 @@ export default function ViewLead() {
                                                         ).toLocaleString()}{" "}
                                                         · {record.user.name} (
                                                         {record.user.email})
+                                                        {record.recordType ===
+                                                            "email" &&
+                                                            ` ➝ ${record.to}`}
                                                     </small>
                                                 </ListGroupItem>
                                             )
