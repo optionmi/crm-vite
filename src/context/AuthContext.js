@@ -42,7 +42,11 @@ export const AuthProvider = ({ children }) => {
 
     const [latitude, setLatitude] = useState(null);
     const [longitude, setLongitude] = useState(null);
-    const [locationID, setLocationID] = useState(null);
+    const [locationID, setLocationID] = useState(() =>
+        sessionStorage.getItem("location")
+            ? JSON.parse(sessionStorage.getItem("location"))
+            : null
+    );
 
     const navigate = useNavigate();
 
@@ -75,6 +79,10 @@ export const AuthProvider = ({ children }) => {
                                     if (info.message === "yes") {
                                         const locationId = info.locationId;
                                         setLocationID(locationId);
+                                        sessionStorage.setItem(
+                                            "location",
+                                            JSON.stringify(locationId)
+                                        );
 
                                         const locationData = {
                                             latitude: latitude,
@@ -93,10 +101,17 @@ export const AuthProvider = ({ children }) => {
                                             id: data.id,
                                         };
 
-                                        locationAPI.createLocation(
-                                            locationData,
-                                            data.token
-                                        );
+                                        locationAPI
+                                            .createLocation(
+                                                locationData,
+                                                data.token
+                                            )
+                                            .then((data) => {
+                                                sessionStorage.setItem(
+                                                    "location",
+                                                    JSON.stringify(data.id)
+                                                );
+                                            });
                                     }
                                 });
                         },
@@ -122,6 +137,7 @@ export const AuthProvider = ({ children }) => {
                             if (sessionStorage.getItem("team")) {
                                 setTeam(null);
                                 sessionStorage.removeItem("team");
+                                sessionStorage.removeItem("location");
                             }
                             navigate("/login");
                         },
@@ -148,6 +164,7 @@ export const AuthProvider = ({ children }) => {
                     if (sessionStorage.getItem("team")) {
                         setTeam(null);
                         sessionStorage.removeItem("team");
+                        sessionStorage.removeItem("location");
                     }
                     navigate("/login");
                 }
@@ -192,6 +209,7 @@ export const AuthProvider = ({ children }) => {
         if (sessionStorage.getItem("team")) {
             setTeam(null);
             sessionStorage.removeItem("team");
+            sessionStorage.removeItem("location");
         }
         navigate("/login");
     };

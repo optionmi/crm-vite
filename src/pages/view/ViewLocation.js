@@ -14,7 +14,6 @@ function ViewLocation() {
     useEffect(() => {
         locationAPI.getLocationByID(id, authToken).then((data) => {
             if (!mapRef.current) {
-                console.log(data);
                 const map = L.map("map").setView(
                     [data.latitude, data.longitude],
                     13
