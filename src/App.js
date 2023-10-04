@@ -6,6 +6,7 @@ import Salesperson from "./pages/Salesperson";
 import Books from "./pages/Books";
 import Leads from "./pages/Leads/Leads";
 import Login from "./pages/Login";
+import Location from "./pages/Location";
 import CreatePublisher from "./pages/create/CreatePublisher";
 import CreateLead from "./pages/Leads/CreateLead";
 import CreateSalesperson from "./pages/create/CreateSalesperson";
@@ -33,6 +34,7 @@ import "./styles/subject.css";
 import "./styles/series.css";
 import "./styles/sample.css";
 import "./styles/utilities.css";
+import "./styles/location.css";
 import Attendance from "./pages/Attendance";
 import CreateAttendance from "./pages/create/CreateAttendance";
 import Expense from "./pages/Expense";
@@ -47,6 +49,7 @@ import Series from "./pages/Series";
 import CreateSeries from "./pages/create/CreateSeries";
 import CreateSample from "./pages/create/CreateSample";
 import ViewLead from "./pages/Leads/ViewLead";
+import ViewLocation from "./pages/view/ViewLocation";
 
 function App() {
     return (
@@ -190,6 +193,13 @@ function App() {
                             exact
                             path="/create/sample"
                             element={<CreateSample />}
+                        />
+                        {/* Location */}
+                        <Route exact path="/track" element={<Location />} />
+                        <Route
+                            exact
+                            path="/view/location/:id"
+                            element={<ViewLocation />}
                         />
                     </Route>
                 </Routes>
