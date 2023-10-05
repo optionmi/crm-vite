@@ -68,6 +68,7 @@ function App() {
         if (User_type === "salesperson" && Team === "SalesTeam") {
             const locationUpdateInterval = setInterval(() => {
                 if ("geolocation" in navigator) {
+                    console.log("Initiaing...");
                     navigator.geolocation.getCurrentPosition(
                         (position) => {
                             const { latitude, longitude } = position.coords;

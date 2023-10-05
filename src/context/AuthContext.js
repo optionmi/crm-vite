@@ -78,6 +78,7 @@ export const AuthProvider = ({ children }) => {
                                 .then((info) => {
                                     if (info.message === "yes") {
                                         const locationId = info.locationId;
+                                        console.log(info.locationId);
                                         setLocationID(locationId);
                                         sessionStorage.setItem(
                                             "location",

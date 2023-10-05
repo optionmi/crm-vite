@@ -17,7 +17,8 @@ const locationAPI = {
                     id: locationData.id,
                 }),
             });
-            return response.data;
+            let data = await response.json();
+            return data;
         } catch (error) {
             throw error;
         }
@@ -43,6 +44,7 @@ const locationAPI = {
     },
 
     updateLocation: async (locationId, locationData, authToken) => {
+        console.log("locationId", locationId);
         try {
             const response = await axios.put(
                 `${BASE_URL}/api/location/${locationId}`,
