@@ -47,6 +47,8 @@ import Series from "./pages/Series";
 import CreateSeries from "./pages/create/CreateSeries";
 import CreateSample from "./pages/create/CreateSample";
 import ViewLead from "./pages/Leads/ViewLead";
+import Quotes from "./pages/Quotes/Quotes";
+import CreateQuote from "./pages/Quotes/CreateQuote";
 
 function App() {
     return (
@@ -192,6 +194,13 @@ function App() {
                             element={<CreateSample />}
                         />
                     </Route>
+                    {/* Quote */}
+                    <Route exact path="/quotes" element={<Quotes />} />
+                    <Route
+                        exact
+                        path="/quotes/create-quote"
+                        element={<CreateQuote />}
+                    />
                 </Routes>
             </AuthProvider>
         </Router>
