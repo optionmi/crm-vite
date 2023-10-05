@@ -1,0 +1,39 @@
+.location {
+    padding: 20px 5px 10px 61px;
+}
+
+.location .card {
+    height: 450px;
+}
+
+.location #detail-card {
+    background-color: lightgray;
+    height: max-content;
+    margin-top: 10px;
+}
+
+.location .view-link:hover {
+    background: none;
+}
+
+.location .scroll-cards::-webkit-scrollbar {
+    height: 2px;
+    width:5px;
+}
+
+.location .scroll-cards::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color:#858585;
+}
+
+.location #map-icon {
+    color: #858585;
+}
+
+/* View Location */
+
+#map {
+    height: 500px;
+    z-index:0;
+}
+

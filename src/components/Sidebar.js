@@ -8,6 +8,7 @@ import {
     faGraduationCap,
     faBookAtlas,
     faBookOpen,
+    faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -124,6 +125,17 @@ const Sidebar = () => {
                         <div className="sidebar-icon d-flex">
                             <FontAwesomeIcon icon={faUserTie} />
                             <span>Salesperson</span>
+                        </div>
+                    </Link>
+                </li>
+                <li>
+                    <Link
+                        to="/track"
+                        className={isActive("/track") ? "active" : ""}
+                    >
+                        <div className="sidebar-icon d-flex">
+                            <FontAwesomeIcon icon={faLocationDot} />
+                            <span>Track</span>
                         </div>
                     </Link>
                 </li>
