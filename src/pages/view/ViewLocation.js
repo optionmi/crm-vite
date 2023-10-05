@@ -30,14 +30,6 @@ function ViewLocation() {
                     map
                 );
 
-                // Add a popup to the marker with some information
-                marker
-                    .bindPopup(
-                        "Updated at " +
-                            data.timestamp.split("T")[1].split(".")[0]
-                    )
-                    .openPopup();
-
                 mapRef.current = map;
             }
         });
