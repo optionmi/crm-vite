@@ -150,6 +150,38 @@ const leadsAPI = {
         }
     },
 
+    dailyPlanning: async (authToken, leadId, visitData) => {
+        try {
+            const response = await fetch(
+                `${BASE_URL}/api/leads/add-visit/${leadId}`,
+                {
+                    method: "POST",
+                    headers: {
+                        Authorization: `Bearer ${authToken}`,
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        visit_date: visitData.visit_date,
+                        visit_location: visitData.visit_location,
+                        notes: visitData.notes,
+                    }),
+                }
+            );
+
+            const data = {
+                ...(await response.json()),
+                resType: response.ok ? "success" : "danger",
+            };
+
+            return data;
+        } catch (error) {
+            return {
+                resType: "danger",
+                message: error.message,
+            };
+        }
+    },
+
     updateStage: async (authToken, leadId, updateData) => {
         try {
             const response = await fetch(

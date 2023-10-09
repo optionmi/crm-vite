@@ -348,6 +348,24 @@ export default function ViewLead() {
     };
     // End Edit Lead
 
+    // Create Daily Planning
+    const handleVisitSubmit = (e) => {
+        e.preventDefault();
+
+        const visitData = {
+            visit_date: e.target.visit_date.value,
+            visit_location: e.target.visit_location.value,
+            notes: e.target.visit_notes.value,
+        };
+
+        leadsAPI.dailyPlanning(authToken, leadID, visitData).then((data) => {
+            // console.log(data);
+            setMessage({ message: data.message, type: data.resType });
+            setShow(true);
+        });
+    };
+    // End Daily Planning
+
     return (
         <>
             <Header />
@@ -699,6 +717,83 @@ export default function ViewLead() {
                                         </Tab>
                                         <Tab eventKey="quote" title="Quote">
                                             Tab content for Quote
+                                        </Tab>
+                                        <Tab
+                                            eventKey="daily_planning"
+                                            title="Daily Planning"
+                                        >
+                                            <Form
+                                                className="d-flex flex-column gap-3"
+                                                onSubmit={(e) =>
+                                                    handleVisitSubmit(e, lead)
+                                                }
+                                            >
+                                                <Form.Group>
+                                                    <Form.Label>
+                                                        Visit Date
+                                                    </Form.Label>
+                                                    <Form.Control
+                                                        name="visit_date"
+                                                        type="date"
+                                                    ></Form.Control>
+                                                </Form.Group>
+
+                                                <Form.Group>
+                                                    <Form.Label>
+                                                        Visit Location
+                                                    </Form.Label>
+                                                    <Form.Control
+                                                        as="select"
+                                                        name="visit_location"
+                                                    >
+                                                        <option value="">
+                                                            Select a visit
+                                                            location
+                                                        </option>
+                                                        <option value="Schools">
+                                                            Schools
+                                                        </option>
+                                                        <option value="Teacher Residence">
+                                                            Teacher Residence
+                                                        </option>
+                                                        <option value="Bookshop/Dealers">
+                                                            Bookshop/Dealers
+                                                        </option>
+                                                        <option value="Coaching Centers">
+                                                            Coaching Centers
+                                                        </option>
+                                                        <option value="Transporters">
+                                                            Transporters
+                                                        </option>
+                                                        <option value="Banks">
+                                                            Banks
+                                                        </option>
+                                                        <option value="Others">
+                                                            Others
+                                                        </option>
+                                                    </Form.Control>
+                                                </Form.Group>
+
+                                                <FormGroup>
+                                                    <Form.Label>
+                                                        Note
+                                                    </Form.Label>
+                                                    <Form.Control
+                                                        as="textarea"
+                                                        rows={3}
+                                                        name="visit_notes"
+                                                        required
+                                                    />
+                                                </FormGroup>
+
+                                                <Button
+                                                    type="submit"
+                                                    variant="success"
+                                                    className="my-4"
+                                                >
+                                                    Save
+                                                </Button>
+                                            </Form>
                                         </Tab>
                                     </Tabs>
                                 </Card.Body>
