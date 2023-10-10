@@ -12,6 +12,7 @@ import {
     ListGroupItem,
     Modal,
     Tab,
+    Table,
     Tabs,
 } from "react-bootstrap";
 import Header from "../../components/Header";
@@ -148,7 +149,7 @@ export default function ViewLead() {
     const LeadDetailsCard = ({ data }) => (
         <Card className="mb-4">
             <Card.Body>
-                <table className="table">
+                <Table hover>
                     <tbody>
                         {data?.map((item, index) => (
                             <tr key={index}>
@@ -157,7 +158,7 @@ export default function ViewLead() {
                             </tr>
                         ))}
                     </tbody>
-                </table>
+                </Table>
             </Card.Body>
         </Card>
     );
@@ -168,7 +169,7 @@ export default function ViewLead() {
                 <ListGroup variant="flush">
                     {data?.map((item, index) => (
                         <ListGroupItem key={index}>
-                            <table className="table">
+                            <Table hover>
                                 <tbody>
                                     {item.map((row, index) => (
                                         <tr key={index}>
@@ -179,7 +180,7 @@ export default function ViewLead() {
                                         </tr>
                                     ))}
                                 </tbody>
-                            </table>
+                            </Table>
                         </ListGroupItem>
                     ))}
                 </ListGroup>
