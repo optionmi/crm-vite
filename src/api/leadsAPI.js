@@ -203,6 +203,25 @@ const leadsAPI = {
             };
         }
     },
+    getLeadByName: async (authToken, term) => {
+        const headers = {
+            Authorization: `Bearer ${authToken}`,
+            "Content-Type": "application/json",
+        };
+        const searchUrl = `${BASE_URL}/api/leads?search=${term}`;
+
+        try {
+            const response = await fetch(searchUrl, { method: "GET", headers });
+            if (!response.ok) {
+                throw new Error("Failed to fetch leads");
+            }
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.error(error);
+            throw error;
+        }
+    },
 };
 
 export default leadsAPI;
