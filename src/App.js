@@ -53,6 +53,8 @@ import Quotes from "./pages/Quotes/Quotes";
 import CreateQuote from "./pages/Quotes/CreateQuote";
 import ViewLocation from "./pages/view/ViewLocation";
 import locationAPI from "./api/locationAPI";
+import Organizations from "./pages/Organizations/Organizations";
+import CreateOrganization from "./pages/Organizations/CreateOrganization";
 
 function App() {
     let {
@@ -217,6 +219,23 @@ function App() {
                 exact
                 path="/quotes/create-quote"
                 element={<CreateQuote />}
+            />
+            <Route
+                exact
+                path="/quotes/update-quote/:quoteID"
+                element={<CreateQuote />}
+            />
+            {/* Organizations */}
+            <Route exact path="/organizations" element={<Organizations />} />
+            <Route
+                exact
+                path="/organizations/create-organization"
+                element={<CreateOrganization />}
+            />
+            <Route
+                exact
+                path="/organizations/update-organization/:organizationID"
+                element={<CreateOrganization />}
             />
         </Routes>
     );

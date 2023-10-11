@@ -22,9 +22,9 @@ export default function Tab3({ formData, setFormData }) {
     const [products, setProducts] = useState([]);
     const [selectedProduct, setSelectedProduct] = useState([]);
 
-    const [totalAmount, setTotalAmount] = useState(0);
-    const [price, setPrice] = useState(0);
-    const [quantity, setQuantity] = useState(1);
+    // const [totalAmount, setTotalAmount] = useState(0);
+    // const [price, setPrice] = useState(0);
+    // const [quantity, setQuantity] = useState(1);
 
     const [leadProducts, setLeadProducts] = useState(
         formData.lead_products.length > 0
@@ -130,8 +130,20 @@ export default function Tab3({ formData, setFormData }) {
 
     const handleRemoveProduct = (e, index) => {
         let leadProductsArr = [...leadProducts];
+
+        let removedItemIdArr = formData.removed_items
+            ? [...formData.removed_items]
+            : [];
+        removedItemIdArr.push(leadProductsArr[index].id);
+
         leadProductsArr.splice(index, 1);
         setLeadProducts(leadProductsArr);
+        setFormData((prevFormData) => {
+            return {
+                ...prevFormData,
+                removed_items: removedItemIdArr,
+            };
+        });
     };
 
     // End Products Section

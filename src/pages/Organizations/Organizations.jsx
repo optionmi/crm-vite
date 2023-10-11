@@ -1,52 +1,66 @@
-import { Link } from "react-router-dom";
+import { Card, Table } from "react-bootstrap";
 import Header from "../../components/Header";
 import Sidebar from "../../components/Sidebar";
-import { Button, Card, Table } from "react-bootstrap";
-import quotesAPI from "../../api/quotesAPI";
+import { Link, useLocation } from "react-router-dom";
+import DeleteConfirmationModal from "../../components/DeleteConfirmationModal";
 import { useContext, useEffect, useState } from "react";
 import AuthContext from "../../context/AuthContext";
-import DeleteConfirmationModal from "../../components/DeleteConfirmationModal";
+import organizationAPI from "../../api/organizationAPI";
 
-export default function Quotes() {
-    const [quotes, setQuotes] = useState([]);
+export default function Organizations() {
     const { authToken } = useContext(AuthContext);
-    const [notification, setNotification] = useState({
-        type: "",
-        message: "",
-        show: false,
-    });
+    const [organizations, setOrganizations] = useState([]);
+    const location = useLocation();
+
+    const [notification, setNotification] = useState(
+        // location.state?.notification ||
+        {
+            type: "",
+            message: "",
+            show: false,
+        }
+    );
 
     useEffect(() => {
         const fetchData = async () => {
-            const data = await quotesAPI.getAllQuotes(authToken);
-            setQuotes(data.quotes);
-            // console.log(data);
+            try {
+                const data = await organizationAPI.getAllOrganizations(
+                    authToken
+                );
+                setOrganizations(data.organizations);
+            } catch (error) {
+                console.error("Error fetching Subjects:", error);
+            }
         };
-
         fetchData();
     }, []);
 
-    const handleDelete = async (quoteID) => {
+    const handleDelete = async (organizationID) => {
         try {
-            const data = await quotesAPI.deleteQuoteByID(quoteID, authToken);
-            if (data.resType === "success") {
-                setQuotes((prevQuotes) =>
-                    prevQuotes.filter((quote) => quote.id !== quoteID)
-                );
-            }
+            const data = await organizationAPI.deleteOrganizationByID(
+                organizationID,
+                authToken
+            );
+            // console.log(data);
             setNotification({
                 type: data.resType,
                 message: data.message,
                 show: true,
             });
+            if (data.resType === "success") {
+                setOrganizations((prevOrganizations) =>
+                    prevOrganizations.filter(
+                        (organization) => organization.id !== organizationID
+                    )
+                );
+            }
         } catch (error) {
-            console.error("Error deleting quote:", error);
+            console.error("Error deleting Organization:", error);
         }
     };
-
     return (
         <>
-            <Header notification={notification} />
+            <Header />
             <Sidebar />
             <main>
                 <div className="d-flex justify-content-between my-2 align-items-center">
@@ -59,15 +73,15 @@ export default function Quotes() {
                                 aria-current="page"
                                 className="breadcrumb-item active"
                             >
-                                Quotes
+                                Organizations
                             </li>
                         </ol>
                     </nav>
                     <Link
                         className="btn btn-sm btn-success"
-                        to={"create-quote"}
+                        to={"create-organization"}
                     >
-                        Create Quote
+                        Create Organization
                     </Link>
                 </div>
                 <Card>
@@ -75,40 +89,32 @@ export default function Quotes() {
                         <Table striped bordered hover responsive>
                             <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th>Subject</th>
-                                    <th>Sales Person</th>
-                                    <th>Person</th>
-                                    <th>Sub Total</th>
-                                    <th>Discount</th>
-                                    <th>Tax</th>
-                                    <th>Adjustment</th>
-                                    <th>Grand Total</th>
-                                    <th>Actions</th>
+                                    <th style={{ width: "10%" }}>#</th>
+                                    <th style={{ width: "40%" }}>Name</th>
+                                    <th style={{ width: "20%" }}>
+                                        Persons Count
+                                    </th>
+                                    <th style={{ width: "30%" }}>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {quotes?.map((quote, index) => (
-                                    <tr key={quote.id}>
+                                {organizations.map((organization, index) => (
+                                    <tr key={organization.id}>
                                         <td>{index + 1}</td>
-                                        <td>{quote.subject}</td>
-                                        <td>{quote.salesperson.name}</td>
-                                        <td>{quote.contact.name}</td>
-                                        <td>{quote.sub_total}</td>
-                                        <td>{quote.total_discount}</td>
-                                        <td>{quote.total_tax}</td>
-                                        <td>{quote.adjustment}</td>
-                                        <td>{quote.grand_total}</td>
-                                        <td className="d-flex gap-2">
+                                        <td>{organization.name}</td>
+                                        <td>{organization._count.contacts}</td>
+                                        <td className="d-flex gap-3">
                                             <Link
-                                                to={`update-quote/${quote.id}`}
                                                 className="btn btn-sm btn-success"
+                                                to={`update-organization/${organization.id}`}
                                             >
                                                 Edit
                                             </Link>
                                             <DeleteConfirmationModal
                                                 handleDelete={() =>
-                                                    handleDelete(quote.id)
+                                                    handleDelete(
+                                                        organization.id
+                                                    )
                                                 }
                                                 notification={notification}
                                             />

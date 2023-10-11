@@ -21,6 +21,12 @@ function Leads() {
     // setLeads(.());
     // console.log(leads);
 
+    const [notification, setNotification] = useState({
+        type: "",
+        message: "",
+        show: false,
+    });
+
     useEffect(() => {
         leadsAPI
             .getAllLeads(authToken)
@@ -30,6 +36,11 @@ function Leads() {
             })
             .catch((error) => {
                 console.error("Error fetching leads:", error);
+                setNotification({
+                    type: "danger",
+                    message: error.message,
+                    show: true,
+                });
             });
     }, []);
 
@@ -151,7 +162,7 @@ function Leads() {
 
     return (
         <div>
-            <Header />
+            <Header notification={notification} />
             <Sidebar />
             <div className="leads">
                 <div className="d-flex justify-content-between align-items-center">

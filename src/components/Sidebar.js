@@ -9,6 +9,8 @@ import {
     faBookAtlas,
     faBookOpen,
     faLocationDot,
+    faPhone,
+    faBuilding,
 } from "@fortawesome/free-solid-svg-icons";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -81,6 +83,28 @@ const Sidebar = () => {
                         <div className="sidebar-icon d-flex">
                             <FontAwesomeIcon icon={faBook} />
                             <span>Books</span>
+                        </div>
+                    </Link>
+                </li>
+                <li>
+                    <Link
+                        to="/organizations"
+                        className={isActive("/organizations") ? "active" : ""}
+                    >
+                        <div className="sidebar-icon d-flex">
+                            <FontAwesomeIcon icon={faBuilding} id="li-1" />
+                            <span>Organizations</span>
+                        </div>
+                    </Link>
+                </li>
+                <li>
+                    <Link
+                        to="/contact-persons"
+                        className={isActive("/contact-persons") ? "active" : ""}
+                    >
+                        <div className="sidebar-icon d-flex">
+                            <FontAwesomeIcon icon={faPhone} id="li-1" />
+                            <span>Contact Persons</span>
                         </div>
                     </Link>
                 </li>
