@@ -753,13 +753,13 @@ export default function ViewLead() {
                                                         <option value="Schools">
                                                             Schools
                                                         </option>
-                                                        <option value="Teacher Residence">
+                                                        <option value="Teacher_Residence">
                                                             Teacher Residence
                                                         </option>
-                                                        <option value="Bookshop/Dealers">
+                                                        <option value="Bookshop_Dealers">
                                                             Bookshop/Dealers
                                                         </option>
-                                                        <option value="Coaching Centers">
+                                                        <option value="Coaching_Centers">
                                                             Coaching Centers
                                                         </option>
                                                         <option value="Transporters">
