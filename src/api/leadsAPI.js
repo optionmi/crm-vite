@@ -182,6 +182,22 @@ const leadsAPI = {
         }
     },
 
+    getAllVisit: async (authToken) => {
+        try {
+            let response = await fetch(`${BASE_URL}/api/leads/all/visit`, {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${authToken}`,
+                    "Content-Type": "application/json",
+                },
+            });
+            let data = await response.json();
+            return data.visit;
+        } catch (error) {
+            throw error;
+        }
+    },
+
     updateStage: async (authToken, leadId, updateData) => {
         try {
             const response = await fetch(

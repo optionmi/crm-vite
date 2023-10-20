@@ -1,3 +1,66 @@
 .home{
-    margin:10px 61px;
+    padding: 20px 5px 10px 61px;
+}
+
+.home .header h5{
+    background-color:#fff;
+    padding:6px 12px;
+    font-size:17px;
+    color:#666;
+    border: 1px solid #888;
+}
+
+.home .dashboard{
+    margin-top: 10px;
+}
+
+.home .dashboard .card{
+    border-radius:3px;
+    height:500px;
+}
+
+.home .dashboard .card-header{
+    background-color:#fff;
+    font-weight:600;
+    font-size:18px;
+    padding-top:15px;
+    padding-bottom:15px;
+}
+
+.home .dashboard .visit_location{
+    margin-top:17px;
+}
+
+.home .dashboard #budget{
+    color:green;
+}
+
+.home .dashboard .top-leads-body{
+    text-align: center;
+}
+
+.home .dashboard .color-label{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.home .dashboard .color-box{
+    height:10px;
+    width:15px;
+}
+
+.home .dashboard #won {
+    background-color:#36A2EB;
+}
+
+.home .dashboard #lost {
+    background-color:#FF6384;
+}
+
+.home .dashboard #no_result {
+    background-color:#888888;
+}
+
+.home .dashboard #top-leads {
+    margin-top:11px;
 }
