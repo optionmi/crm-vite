@@ -15,7 +15,7 @@ function ViewLocation() {
         locationAPI.getLocationByID(id, authToken).then((data) => {
             if (!mapRef.current) {
                 const map = L.map("map").setView(
-                    [data.latitude, data.longitude],
+                    [data?.latitude, data?.longitude],
                     13
                 );
 
@@ -26,9 +26,10 @@ function ViewLocation() {
                 }).addTo(map);
 
                 // Create a marker at the user's current location
-                const marker = L.marker([data.latitude, data.longitude]).addTo(
-                    map
-                );
+                const marker = L.marker([
+                    data?.latitude,
+                    data?.longitude,
+                ]).addTo(map);
 
                 mapRef.current = map;
             }

@@ -184,3 +184,6 @@ div.custom-breadcrumb {
 .readonly .ql-toolbar {
     display: none;
 }
+.readonly .ql-container {
+    border: none !important;
+}

@@ -3,9 +3,11 @@ import axios from "axios";
 const BASE_URL = "http://localhost:8000";
 
 const contactsAPI = {
-    getAllContacts: async (authToken) => {
+    getAllContacts: async (authToken, pageIndex, pageSize) => {
         try {
-            const url = `${BASE_URL}/api/contacts/all`;
+            const url = `${BASE_URL}/api/contacts/all?page=${
+                pageIndex + 1
+            }&pageSize=${pageSize}`;
             const headers = {
                 Authorization: `Bearer ${authToken}`,
                 "Content-Type": "application/json",
@@ -23,10 +25,29 @@ const contactsAPI = {
         }
     },
 
-    getContactById: async (contactId) => {
-        const url = `${BASE_URL}/api/contacts/${contactId}`;
-        const { data } = await fetch(url);
-        return data;
+    getContactById: async (authToken, contactID) => {
+        try {
+            const config = {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${authToken}`,
+                },
+            };
+            const res = await axios.get(
+                `${BASE_URL}/api/contacts/${contactID}`,
+                config
+            );
+            const data = {
+                ...res.data,
+                resType: res.status === 200 ? "success" : "danger",
+            };
+            return data;
+        } catch (error) {
+            return {
+                resType: "danger",
+                message: error.message,
+            };
+        }
     },
 
     getContactByName: async (authToken, term) => {
@@ -49,38 +70,81 @@ const contactsAPI = {
         }
     },
 
-    createContact: async (contactData) => {
+    createContact: async (authToken, formData) => {
         try {
-            const response = await axios.post(
+            const config = {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${authToken}`,
+                },
+            };
+            const res = await axios.post(
                 `${BASE_URL}/api/contacts/create`,
-                contactData
+                formData,
+                config
             );
-            return response.data;
+            const data = {
+                ...res.data,
+                resType: res.status === 201 ? "success" : "danger",
+            };
+
+            return data;
         } catch (error) {
-            throw error;
+            return {
+                resType: "danger",
+                message: error.message,
+            };
         }
     },
 
-    updateContact: async (contactId, contactData) => {
+    updateContactByID: async (authToken, contactID, formData) => {
         try {
-            const response = await axios.put(
-                `${BASE_URL}/api/contacts/${contactId}`,
-                contactData
+            const config = {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${authToken}`,
+                },
+            };
+            const res = await axios.put(
+                `${BASE_URL}/api/contacts/${contactID}`,
+                formData,
+                config
             );
-            return response.data;
+            const data = {
+                ...res.data,
+                resType: res.status === 200 ? "success" : "danger",
+            };
+            return data;
         } catch (error) {
-            throw error;
+            return {
+                resType: "danger",
+                message: error.message,
+            };
         }
     },
 
-    deleteContact: async (contactId) => {
+    deleteContactByID: async (authToken, contactID) => {
         try {
-            const response = await axios.delete(
-                `${BASE_URL}/api/contacts/${contactId}`
+            const config = {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${authToken}`,
+                },
+            };
+            const res = await axios.delete(
+                `${BASE_URL}/api/contacts/${contactID}`,
+                config
             );
-            return response.data;
+            const data = {
+                ...res.data,
+                resType: res.status === 200 ? "success" : "danger",
+            };
+            return data;
         } catch (error) {
-            throw error;
+            return {
+                resType: "danger",
+                message: error.message,
+            };
         }
     },
 };

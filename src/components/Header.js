@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import AuthContext from "../context/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -16,13 +16,29 @@ import {
     faGraduationCap,
     faBookOpen,
     faBookAtlas,
+    faEnvelope,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import ToastNotification from "./ToastNotification";
+import { Dropdown } from "react-bootstrap";
+import emailAPI from "../api/emailAPI";
 
 function Header({ notification }) {
-    const { logoutUser, Name } = useContext(AuthContext);
+    const { logoutUser, Name, authToken } = useContext(AuthContext);
     const [showToast, setShowToast] = useState(true);
+
+    const [emailNotifications, setEmailNotifications] = useState([]);
+    useEffect(() => {
+        try {
+            const fetchData = async () => {
+                const data = await emailAPI.getEmailNotifications(authToken);
+                setEmailNotifications(data.emails);
+            };
+            fetchData();
+        } catch (error) {
+            console.error("Error fetching Email Notifications:", error);
+        }
+    }, []);
 
     return (
         <>
@@ -47,7 +63,29 @@ function Header({ notification }) {
                         >
                             CRM
                         </Link>
-                        <div className="d-flex header-btn">
+                        <div className="d-flex header-btn align-items-center gap-2">
+                            {emailNotifications?.length > 0 && (
+                                <div className="dropdown">
+                                    <button className="drop-toggle text-capitalize">
+                                        <FontAwesomeIcon
+                                            icon={faEnvelope}
+                                            id="user-icon"
+                                        />
+                                    </button>
+                                    <ul className="dropdown-menu">
+                                        {emailNotifications?.map((email) => (
+                                            <li key={email.id}>
+                                                <Link
+                                                    to={`/emails/view-email/${email.id}`}
+                                                >
+                                                    {email.subject}
+                                                </Link>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )}
+
                             <div className="dropdown">
                                 <button className="drop-toggle">
                                     <div className="circle">

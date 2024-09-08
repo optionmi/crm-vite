@@ -11,6 +11,7 @@ import {
     faLocationDot,
     faPhone,
     faBuilding,
+    faEnvelope,
 } from "@fortawesome/free-solid-svg-icons";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -127,6 +128,17 @@ const Sidebar = () => {
                         <div className="sidebar-icon d-flex">
                             <FontAwesomeIcon icon={faFilter} id="li-1" />
                             <span>Quotes</span>
+                        </div>
+                    </Link>
+                </li>
+                <li>
+                    <Link
+                        to="/emails/inbox"
+                        className={isActive("/emails/inbox") ? "active" : ""}
+                    >
+                        <div className="sidebar-icon d-flex">
+                            <FontAwesomeIcon icon={faEnvelope} id="li-1" />
+                            <span>Emails</span>
                         </div>
                     </Link>
                 </li>

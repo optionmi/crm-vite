@@ -6,6 +6,7 @@ import AuthContext from "../context/AuthContext";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
+import { Card, Table } from "react-bootstrap";
 
 function Salesperson() {
     let { authToken } = useContext(AuthContext);
@@ -38,39 +39,26 @@ function Salesperson() {
                     </Link>
                 </div>
 
-                <div className="card">
-                    <div className="card-header">
-                        <div className="row">
-                            <div className="col-3">
-                                <h5>Name</h5>
-                            </div>
-                            <div className="col-3">
-                                <h5>Phone</h5>
-                            </div>
-                            <div className="col-3">
-                                <h5>Team</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="card-body scroll-cards">
-                        {salesPersons?.map((salesPerson) => (
-                            <div
-                                className="card"
-                                id="detail-card"
-                                key={salesPerson.id}
-                            >
-                                <div className="card-body">
-                                    <div className="row">
-                                        <div className="col-3">
-                                            <h6>{salesPerson.name}</h6>
-                                        </div>
-                                        <div className="col-3">
-                                            <h6>{salesPerson.phone_number}</h6>
-                                        </div>
-                                        <div className="col-3">
-                                            <h6>{salesPerson.team}</h6>
-                                        </div>
-                                        <div className="col-3">
+                <Card>
+                    <Card.Body>
+                        <Table striped bordered hover responsive>
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Phone Number</th>
+                                    <th>Team</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {salesPersons?.map((salesPerson, index) => (
+                                    <tr key={salesPerson.id}>
+                                        <td>{index + 1}</td>
+                                        <td>{salesPerson.name}</td>
+                                        <td>{salesPerson.phone_number}</td>
+                                        <td>{salesPerson.team}</td>
+                                        <td className="col-3">
                                             <Link
                                                 className="view-link"
                                                 to={`/salesperson/view/${salesPerson.id}`}
@@ -80,13 +68,13 @@ function Salesperson() {
                                                     id="eye-icon"
                                                 />
                                             </Link>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </Table>
+                    </Card.Body>
+                </Card>
             </div>
         </div>
     );

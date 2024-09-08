@@ -55,6 +55,11 @@ import ViewLocation from "./pages/view/ViewLocation";
 import locationAPI from "./api/locationAPI";
 import Organizations from "./pages/Organizations/Organizations";
 import CreateOrganization from "./pages/Organizations/CreateOrganization";
+import ContactPersons from "./pages/ContactPersons/ContactPersons";
+import CreateContact from "./pages/ContactPersons/CreateContact";
+import ViewEmail from "./pages/Emails/ViewEmail";
+import Emails from "./pages/Emails/Emails";
+import Sent from "./pages/Emails/Sent";
 
 function App() {
     let {
@@ -236,6 +241,26 @@ function App() {
                 exact
                 path="/organizations/update-organization/:organizationID"
                 element={<CreateOrganization />}
+            />
+            {/* Contact Person */}
+            <Route exact path="/contact-persons" element={<ContactPersons />} />
+            <Route
+                exact
+                path="/contact-persons/create-contact"
+                element={<CreateContact />}
+            />
+            <Route
+                exact
+                path="/contact-persons/update-contact/:contactID"
+                element={<CreateContact />}
+            />
+            {/* Email */}
+            <Route exact path="/emails/inbox" element={<Emails />} />
+            <Route exact path="/emails/sent" element={<Sent />} />
+            <Route
+                exact
+                path="/emails/view-email/:emailID"
+                element={<ViewEmail />}
             />
         </Routes>
     );

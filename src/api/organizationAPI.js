@@ -131,6 +131,31 @@ const quotesAPI = {
             };
         }
     },
+
+    getOrganizationByName: async (authToken, term) => {
+        try {
+            const config = {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${authToken}`,
+                },
+            };
+            const res = await axios.get(
+                `${BASE_URL}/api/organizations?search=${term}`,
+                config
+            );
+            const data = {
+                ...res.data,
+                resType: res.status === 200 ? "success" : "danger",
+            };
+            return data;
+        } catch (error) {
+            return {
+                resType: "danger",
+                message: error.message,
+            };
+        }
+    },
 };
 
 export default quotesAPI;
